@@ -1,0 +1,52 @@
+{
+	"name": "@celados/bash-parser",
+	"version": "0.1.0",
+	"description": "Pure TypeScript bash parser with exact source spans, validated against mvdan/sh.",
+	"keywords": [
+		"ast",
+		"bash",
+		"parser",
+		"shell"
+	],
+	"license": "BSD-3-Clause",
+	"repository": "https://github.com/celados/bash-parser",
+	"files": [
+		"src",
+		"!src/**/*.test.ts",
+		"LICENSE"
+	],
+	"type": "module",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"import": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://npm.celados.com"
+	},
+	"scripts": {
+		"test": "bun test",
+		"bench": "bun scripts/bench.ts",
+		"corpus": "bash scripts/regenerate.sh",
+		"typecheck": "harness typecheck",
+		"fmt": "vp fmt",
+		"check": "vp check && harness typecheck && fallow dead-code && bun test",
+		"prepare": "vp config"
+	},
+	"devDependencies": {
+		"@celados/harness": "^0.1.8",
+		"@types/bun": "^1.4.5",
+		"fallow": "^3.45.0",
+		"sh-syntax": "^0.8.7",
+		"tsrs": "^7.1.0-beta.tsrs4",
+		"typescript": "^7.0.2",
+		"vite-plus": "^1.7.0"
+	},
+	"engines": {
+		"bun": ">=1.4.0"
+	}
+}

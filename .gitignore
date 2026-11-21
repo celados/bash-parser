@@ -1,0 +1,7 @@
+dist/
+
+.npmrc
+.claude/worktrees/
+node_modules/
+.scratch/
+.npmrc.tpl

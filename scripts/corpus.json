@@ -1,0 +1,5638 @@
+{
+	"source": "https://github.com/mvdan/sh",
+	"commit": "6f0102cc00b2024fdffb1f6b8a15d0d586cd5324",
+	"license": "Copyright (c) 2016, Daniel Martí. BSD-3-Clause; see LICENSE.",
+	"cases": [
+		{
+			"id": "fileTests/0/0",
+			"input": ""
+		},
+		{
+			"id": "fileTests/0/1",
+			"input": " "
+		},
+		{
+			"id": "fileTests/0/2",
+			"input": "\t"
+		},
+		{
+			"id": "fileTests/0/3",
+			"input": "\n \n"
+		},
+		{
+			"id": "fileTests/0/4",
+			"input": "\r \r\n"
+		},
+		{
+			"id": "fileTests/1/0",
+			"input": ""
+		},
+		{
+			"id": "fileTests/1/1",
+			"input": "# foo"
+		},
+		{
+			"id": "fileTests/1/2",
+			"input": "# foo ( bar"
+		},
+		{
+			"id": "fileTests/1/3",
+			"input": "# foo'bar"
+		},
+		{
+			"id": "fileTests/2/0",
+			"input": "foo"
+		},
+		{
+			"id": "fileTests/2/1",
+			"input": "foo "
+		},
+		{
+			"id": "fileTests/2/2",
+			"input": " foo"
+		},
+		{
+			"id": "fileTests/2/3",
+			"input": "foo # bar"
+		},
+		{
+			"id": "fileTests/3/0",
+			"input": "foo #\\\nbar"
+		},
+		{
+			"id": "fileTests/3/1",
+			"input": "foo #\\\r\nbar"
+		},
+		{
+			"id": "fileTests/4/0",
+			"input": "\\"
+		},
+		{
+			"id": "fileTests/5/0",
+			"input": "foo\\"
+		},
+		{
+			"id": "fileTests/5/1",
+			"input": "f\\\noo\\"
+		},
+		{
+			"id": "fileTests/6/0",
+			"input": "foo\\\\"
+		},
+		{
+			"id": "fileTests/7/0",
+			"input": "foo\\\\\\"
+		},
+		{
+			"id": "fileTests/8/0",
+			"input": "foo\\a"
+		},
+		{
+			"id": "fileTests/8/1",
+			"input": "f\\\noo\\a"
+		},
+		{
+			"id": "fileTests/9/0",
+			"input": "foo\nbar"
+		},
+		{
+			"id": "fileTests/9/1",
+			"input": "foo; bar;"
+		},
+		{
+			"id": "fileTests/9/2",
+			"input": "foo;bar;"
+		},
+		{
+			"id": "fileTests/9/3",
+			"input": "\nfoo\nbar\n"
+		},
+		{
+			"id": "fileTests/9/4",
+			"input": "foo\r\nbar\r\n"
+		},
+		{
+			"id": "fileTests/10/0",
+			"input": "foo a b"
+		},
+		{
+			"id": "fileTests/10/1",
+			"input": " foo  a  b "
+		},
+		{
+			"id": "fileTests/10/2",
+			"input": "foo \\\n a b"
+		},
+		{
+			"id": "fileTests/10/3",
+			"input": "foo \\\r\n a b"
+		},
+		{
+			"id": "fileTests/11/0",
+			"input": "foobar"
+		},
+		{
+			"id": "fileTests/11/1",
+			"input": "foo\\\nbar"
+		},
+		{
+			"id": "fileTests/11/2",
+			"input": "foo\\\nba\\\nr"
+		},
+		{
+			"id": "fileTests/12/0",
+			"input": "foo"
+		},
+		{
+			"id": "fileTests/12/1",
+			"input": "foo \\\n"
+		},
+		{
+			"id": "fileTests/12/2",
+			"input": "foo \\\r\n"
+		},
+		{
+			"id": "fileTests/13/0",
+			"input": "foo'bar'"
+		},
+		{
+			"id": "fileTests/14/0",
+			"input": "(foo)"
+		},
+		{
+			"id": "fileTests/14/1",
+			"input": "(foo;)"
+		},
+		{
+			"id": "fileTests/14/2",
+			"input": "(\nfoo\n)"
+		},
+		{
+			"id": "fileTests/15/0",
+			"input": "(\n\tfoo\n\tbar\n)"
+		},
+		{
+			"id": "fileTests/15/1",
+			"input": "(foo; bar)"
+		},
+		{
+			"id": "fileTests/16/0",
+			"input": "{ foo; }"
+		},
+		{
+			"id": "fileTests/16/1",
+			"input": "{\nfoo\n}"
+		},
+		{
+			"id": "fileTests/17/0",
+			"input": "{ if a; then b; fi; }"
+		},
+		{
+			"id": "fileTests/17/1",
+			"input": "{ if a; then b; fi }"
+		},
+		{
+			"id": "fileTests/18/0",
+			"input": "if a; then b; fi"
+		},
+		{
+			"id": "fileTests/18/1",
+			"input": "if a\nthen\nb\nfi"
+		},
+		{
+			"id": "fileTests/18/2",
+			"input": "if a;\nthen\nb\nfi"
+		},
+		{
+			"id": "fileTests/18/3",
+			"input": "if a \nthen\nb\nfi"
+		},
+		{
+			"id": "fileTests/18/4",
+			"input": "if\u0000 a; th\u0000en b; \u0000fi"
+		},
+		{
+			"id": "fileTests/19/0",
+			"input": "if a; then b; else c; fi"
+		},
+		{
+			"id": "fileTests/19/1",
+			"input": "if a\nthen b\nelse\nc\nfi"
+		},
+		{
+			"id": "fileTests/20/0",
+			"input": "else"
+		},
+		{
+			"id": "fileTests/21/0",
+			"input": "if a; then a; elif b; then b; else c; fi"
+		},
+		{
+			"id": "fileTests/22/0",
+			"input": "if a; then a; elif b; then b; elif c; then c; else d; fi"
+		},
+		{
+			"id": "fileTests/22/1",
+			"input": "if a\nthen a\nelif b\nthen b\nelif c\nthen c\nelse\nd\nfi"
+		},
+		{
+			"id": "fileTests/23/0",
+			"input": "if\n\ta1\n\ta2 foo\n\ta3 bar\nthen b; fi"
+		},
+		{
+			"id": "fileTests/23/1",
+			"input": "if a1; a2 foo; a3 bar; then b; fi"
+		},
+		{
+			"id": "fileTests/24/0",
+			"input": "((a == 2))"
+		},
+		{
+			"id": "fileTests/25/0",
+			"input": "if (($# > 2)); then b; fi"
+		},
+		{
+			"id": "fileTests/26/0",
+			"input": "(($(date -u) > DATE))"
+		},
+		{
+			"id": "fileTests/26/1",
+			"input": "((`date -u` > DATE))"
+		},
+		{
+			"id": "fileTests/27/0",
+			"input": ": $((0x$foo == 10))"
+		},
+		{
+			"id": "fileTests/28/0",
+			"input": "((# 1 + 2))"
+		},
+		{
+			"id": "fileTests/28/1",
+			"input": "(( # 1 + 2 ))"
+		},
+		{
+			"id": "fileTests/29/0",
+			"input": "$((# 1 + 2))"
+		},
+		{
+			"id": "fileTests/29/1",
+			"input": "$(( # 1 + 2 ))"
+		},
+		{
+			"id": "fileTests/30/0",
+			"input": "((3#20))"
+		},
+		{
+			"id": "fileTests/31/0",
+			"input": "((1.2 > 0.3))"
+		},
+		{
+			"id": "fileTests/32/0",
+			"input": "$((abs(-5)))"
+		},
+		{
+			"id": "fileTests/33/0",
+			"input": "$((atan(1.0, x) * 4))"
+		},
+		{
+			"id": "fileTests/33/1",
+			"input": "$(( atan( 1.0 ,x )*4 ))"
+		},
+		{
+			"id": "fileTests/33/2",
+			"input": "$((atan(\n1.0,\nx\n)*4))"
+		},
+		{
+			"id": "fileTests/34/0",
+			"input": "((f()))"
+		},
+		{
+			"id": "fileTests/34/1",
+			"input": "(( f( ) ))"
+		},
+		{
+			"id": "fileTests/35/0",
+			"input": "$((f(a = g(1), (b, c))))"
+		},
+		{
+			"id": "fileTests/36/0",
+			"input": "${a[abs(-2)]}"
+		},
+		{
+			"id": "fileTests/37/0",
+			"input": "while a; do b; done"
+		},
+		{
+			"id": "fileTests/37/1",
+			"input": "wh\\\nile a; do b; done"
+		},
+		{
+			"id": "fileTests/37/2",
+			"input": "wh\\\r\nile a; do b; done"
+		},
+		{
+			"id": "fileTests/37/3",
+			"input": "while a\ndo\nb\ndone"
+		},
+		{
+			"id": "fileTests/37/4",
+			"input": "while a;\ndo\nb\ndone"
+		},
+		{
+			"id": "fileTests/38/0",
+			"input": "while { a; }; do b; done"
+		},
+		{
+			"id": "fileTests/38/1",
+			"input": "while { a; } do b; done"
+		},
+		{
+			"id": "fileTests/39/0",
+			"input": "while (a); do b; done"
+		},
+		{
+			"id": "fileTests/39/1",
+			"input": "while (a) do b; done"
+		},
+		{
+			"id": "fileTests/40/0",
+			"input": "while ((1 > 2)); do b; done"
+		},
+		{
+			"id": "fileTests/41/0",
+			"input": "until a; do b; done"
+		},
+		{
+			"id": "fileTests/41/1",
+			"input": "until a\ndo\nb\ndone"
+		},
+		{
+			"id": "fileTests/42/0",
+			"input": "for i; do foo; done"
+		},
+		{
+			"id": "fileTests/42/1",
+			"input": "for i do foo; done"
+		},
+		{
+			"id": "fileTests/42/2",
+			"input": "for i\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/42/3",
+			"input": "for i;\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/42/4",
+			"input": "for i in; do foo; done"
+		},
+		{
+			"id": "fileTests/43/0",
+			"input": "for i in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "fileTests/43/1",
+			"input": "for i in 1 2 3\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/43/2",
+			"input": "for i in 1 2 3;\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/43/3",
+			"input": "for i in 1 2 3 #foo\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/44/0",
+			"input": "for i in \\\n\t1 2 3; do #foo\n\techo $i\ndone"
+		},
+		{
+			"id": "fileTests/44/1",
+			"input": "for i #foo\n\tin 1 2 3; do\n\techo $i\ndone"
+		},
+		{
+			"id": "fileTests/45/0",
+			"input": "for i; do foo; done"
+		},
+		{
+			"id": "fileTests/45/1",
+			"input": "for i; { foo; }"
+		},
+		{
+			"id": "fileTests/46/0",
+			"input": "for i in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "fileTests/46/1",
+			"input": "for i in 1 2 3; { echo $i; }"
+		},
+		{
+			"id": "fileTests/47/0",
+			"input": "for a b c; do foo; done"
+		},
+		{
+			"id": "fileTests/47/1",
+			"input": "for a b c do foo; done"
+		},
+		{
+			"id": "fileTests/47/2",
+			"input": "for a b c\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/47/3",
+			"input": "for a b c in; do foo; done"
+		},
+		{
+			"id": "fileTests/48/0",
+			"input": "for a b in 1 2 3; do echo $a $b; done"
+		},
+		{
+			"id": "fileTests/48/1",
+			"input": "for a b #foo\n\tin 1 2 3\ndo echo $a $b\ndone"
+		},
+		{
+			"id": "fileTests/49/0",
+			"input": "for a b \\\n\tc in x; do foo; done"
+		},
+		{
+			"id": "fileTests/50/0",
+			"input": "repeat 3; do foo; done"
+		},
+		{
+			"id": "fileTests/50/1",
+			"input": "repeat 3 do foo; done"
+		},
+		{
+			"id": "fileTests/50/2",
+			"input": "repeat 3\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/50/3",
+			"input": "repeat 3;\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/50/4",
+			"input": "repeat 3 #c\ndo foo\ndone"
+		},
+		{
+			"id": "fileTests/50/5",
+			"input": "repeat 3 { foo; }"
+		},
+		{
+			"id": "fileTests/50/6",
+			"input": "repeat 3 { foo }"
+		},
+		{
+			"id": "fileTests/50/7",
+			"input": "repeat 3; { foo; }"
+		},
+		{
+			"id": "fileTests/50/8",
+			"input": "repeat 3\n{ foo; }"
+		},
+		{
+			"id": "fileTests/50/9",
+			"input": "repeat 3 ; ;\n;do foo; done"
+		},
+		{
+			"id": "fileTests/50/10",
+			"input": "repeat 3 foo"
+		},
+		{
+			"id": "fileTests/50/11",
+			"input": "repeat 3; foo"
+		},
+		{
+			"id": "fileTests/50/12",
+			"input": "repeat 3\nfoo"
+		},
+		{
+			"id": "fileTests/51/0",
+			"input": "repeat 3; do foo && bar | baz; done"
+		},
+		{
+			"id": "fileTests/51/1",
+			"input": "repeat 3 foo && bar | baz"
+		},
+		{
+			"id": "fileTests/52/0",
+			"input": "repeat 3; do foo; done &\nbar"
+		},
+		{
+			"id": "fileTests/52/1",
+			"input": "repeat 3 foo &\nbar"
+		},
+		{
+			"id": "fileTests/52/2",
+			"input": "repeat 3 foo & bar"
+		},
+		{
+			"id": "fileTests/53/0",
+			"input": "repeat 3; do repeat 2; do foo; done; done"
+		},
+		{
+			"id": "fileTests/53/1",
+			"input": "repeat 3 repeat 2 foo"
+		},
+		{
+			"id": "fileTests/54/0",
+			"input": "repeat $((n + 1)); do\n\tfoo\n\tbar\ndone"
+		},
+		{
+			"id": "fileTests/54/1",
+			"input": "repeat $((n+1)) {\nfoo\nbar\n}"
+		},
+		{
+			"id": "fileTests/55/0",
+			"input": "repeat \"$(\n\tfoo\n)\"\ndo\n\tbar\ndone"
+		},
+		{
+			"id": "fileTests/55/1",
+			"input": "repeat \"$(foo)\"; do bar; done"
+		},
+		{
+			"id": "fileTests/56/0",
+			"input": "repeat 3; do; done"
+		},
+		{
+			"id": "fileTests/56/1",
+			"input": "repeat 3 { }"
+		},
+		{
+			"id": "fileTests/56/2",
+			"input": "repeat 3 do\ndone"
+		},
+		{
+			"id": "fileTests/56/3",
+			"input": "repeat 3"
+		},
+		{
+			"id": "fileTests/56/4",
+			"input": "repeat 3;"
+		},
+		{
+			"id": "fileTests/57/0",
+			"input": "repeat 3; do; done && foo"
+		},
+		{
+			"id": "fileTests/57/1",
+			"input": "repeat 3 && foo"
+		},
+		{
+			"id": "fileTests/58/0",
+			"input": "repeat 3 & foo"
+		},
+		{
+			"id": "fileTests/59/0",
+			"input": "repeat 3 &| foo"
+		},
+		{
+			"id": "fileTests/60/0",
+			"input": "repeat 3 &! foo"
+		},
+		{
+			"id": "fileTests/61/0",
+			"input": "{ repeat 3; do; done; }"
+		},
+		{
+			"id": "fileTests/61/1",
+			"input": "{ repeat 3 }"
+		},
+		{
+			"id": "fileTests/61/2",
+			"input": "{ repeat 3; }"
+		},
+		{
+			"id": "fileTests/62/0",
+			"input": "while foo; do repeat 3; do; done; done"
+		},
+		{
+			"id": "fileTests/62/1",
+			"input": "while foo; do repeat 3; done"
+		},
+		{
+			"id": "fileTests/63/0",
+			"input": "repeat 3; do foo; done >a | bar"
+		},
+		{
+			"id": "fileTests/64/0",
+			"input": "repeat 3 foo"
+		},
+		{
+			"id": "fileTests/65/0",
+			"input": "for ((i = 0; i < 10; i++)); do echo $i; done"
+		},
+		{
+			"id": "fileTests/65/1",
+			"input": "for ((i=0;i<10;i++)) do echo $i; done"
+		},
+		{
+			"id": "fileTests/65/2",
+			"input": "for (( i = 0 ; i < 10 ; i++ ))\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/65/3",
+			"input": "for (( i = 0 ; i < 10 ; i++ ));\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/66/0",
+			"input": "for (( ; ; )); do foo; done"
+		},
+		{
+			"id": "fileTests/66/1",
+			"input": "for ((;;)); do foo; done"
+		},
+		{
+			"id": "fileTests/67/0",
+			"input": "for ((i = 0; ; )); do foo; done"
+		},
+		{
+			"id": "fileTests/67/1",
+			"input": "for ((i = 0;;)); do foo; done"
+		},
+		{
+			"id": "fileTests/68/0",
+			"input": "select i; do foo; done"
+		},
+		{
+			"id": "fileTests/68/1",
+			"input": "select i in; do foo; done"
+		},
+		{
+			"id": "fileTests/69/0",
+			"input": "select i in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "fileTests/69/1",
+			"input": "select i in 1 2 3\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/69/2",
+			"input": "select i in 1 2 3 #foo\ndo echo $i\ndone"
+		},
+		{
+			"id": "fileTests/70/0",
+			"input": "select foo bar"
+		},
+		{
+			"id": "fileTests/71/0",
+			"input": "select i in a; do b; done"
+		},
+		{
+			"id": "fileTests/72/0",
+			"input": "echo select"
+		},
+		{
+			"id": "fileTests/73/0",
+			"input": "select() { a; }"
+		},
+		{
+			"id": "fileTests/74/0",
+			"input": "' ' \"foo bar\""
+		},
+		{
+			"id": "fileTests/75/0",
+			"input": "\"foo \\\" bar\""
+		},
+		{
+			"id": "fileTests/76/0",
+			"input": "\">foo\" \"\nbar\""
+		},
+		{
+			"id": "fileTests/77/0",
+			"input": "foo \\\" bar"
+		},
+		{
+			"id": "fileTests/78/0",
+			"input": "'\"'"
+		},
+		{
+			"id": "fileTests/79/0",
+			"input": "'`'"
+		},
+		{
+			"id": "fileTests/80/0",
+			"input": "\"'\""
+		},
+		{
+			"id": "fileTests/81/0",
+			"input": "\"\""
+		},
+		{
+			"id": "fileTests/82/0",
+			"input": "=a s{s s=s"
+		},
+		{
+			"id": "fileTests/83/0",
+			"input": "foo && bar"
+		},
+		{
+			"id": "fileTests/83/1",
+			"input": "foo&&bar"
+		},
+		{
+			"id": "fileTests/83/2",
+			"input": "foo &&\nbar"
+		},
+		{
+			"id": "fileTests/84/0",
+			"input": "foo &&\n\tbar"
+		},
+		{
+			"id": "fileTests/85/0",
+			"input": "foo || bar"
+		},
+		{
+			"id": "fileTests/85/1",
+			"input": "foo||bar"
+		},
+		{
+			"id": "fileTests/85/2",
+			"input": "foo ||\nbar"
+		},
+		{
+			"id": "fileTests/86/0",
+			"input": "if a; then b; fi || while a; do b; done"
+		},
+		{
+			"id": "fileTests/87/0",
+			"input": "foo && bar1 || bar2"
+		},
+		{
+			"id": "fileTests/88/0",
+			"input": "a || b || c || d"
+		},
+		{
+			"id": "fileTests/89/0",
+			"input": "foo | bar"
+		},
+		{
+			"id": "fileTests/89/1",
+			"input": "foo|bar"
+		},
+		{
+			"id": "fileTests/89/2",
+			"input": "foo |\n#etc\nbar"
+		},
+		{
+			"id": "fileTests/90/0",
+			"input": "foo | bar | extra"
+		},
+		{
+			"id": "fileTests/91/0",
+			"input": "foo | a=b bar"
+		},
+		{
+			"id": "fileTests/92/0",
+			"input": "foo |&"
+		},
+		{
+			"id": "fileTests/93/0",
+			"input": "foo \\\n\t|&"
+		},
+		{
+			"id": "fileTests/94/0",
+			"input": "foo |& bar"
+		},
+		{
+			"id": "fileTests/94/1",
+			"input": "foo|&bar"
+		},
+		{
+			"id": "fileTests/95/0",
+			"input": "foo &|"
+		},
+		{
+			"id": "fileTests/95/1",
+			"input": "foo &!"
+		},
+		{
+			"id": "fileTests/96/0",
+			"input": "foo &|\nbar"
+		},
+		{
+			"id": "fileTests/97/0",
+			"input": "foo() {\n\ta\n\tb\n}"
+		},
+		{
+			"id": "fileTests/97/1",
+			"input": "foo() { a; b; }"
+		},
+		{
+			"id": "fileTests/97/2",
+			"input": "foo ( ) {\na\nb\n}"
+		},
+		{
+			"id": "fileTests/97/3",
+			"input": "foo()\n{\na\nb\n}"
+		},
+		{
+			"id": "fileTests/98/0",
+			"input": "foo() { a; }\nbar"
+		},
+		{
+			"id": "fileTests/98/1",
+			"input": "foo() {\na\n}; bar"
+		},
+		{
+			"id": "fileTests/99/0",
+			"input": "foO_123() { a; }"
+		},
+		{
+			"id": "fileTests/100/0",
+			"input": "-foo_.,+-bar() { a; }"
+		},
+		{
+			"id": "fileTests/101/0",
+			"input": "function foo() {\n\ta\n\tb\n}"
+		},
+		{
+			"id": "fileTests/101/1",
+			"input": "function foo() { a; b; }"
+		},
+		{
+			"id": "fileTests/102/0",
+			"input": "function foo {\n\ta\n\tb\n}"
+		},
+		{
+			"id": "fileTests/102/1",
+			"input": "function foo { a; b; }"
+		},
+		{
+			"id": "fileTests/103/0",
+			"input": "function foo\n{\n\ta\n}"
+		},
+		{
+			"id": "fileTests/104/0",
+			"input": "function() { a; }"
+		},
+		{
+			"id": "fileTests/105/0",
+			"input": "function foo() (a)"
+		},
+		{
+			"id": "fileTests/106/0",
+			"input": "function f1 f2 f3() {\n\ta\n}"
+		},
+		{
+			"id": "fileTests/107/0",
+			"input": "function f1 f2 f3() {\n\ta\n}"
+		},
+		{
+			"id": "fileTests/108/0",
+			"input": "function {\n\ta\n}"
+		},
+		{
+			"id": "fileTests/109/0",
+			"input": "() {\n\ta\n}"
+		},
+		{
+			"id": "fileTests/110/0",
+			"input": "() { a; } b c"
+		},
+		{
+			"id": "fileTests/110/1",
+			"input": "() { a } b c"
+		},
+		{
+			"id": "fileTests/110/2",
+			"input": "() {\na\n} b c"
+		},
+		{
+			"id": "fileTests/111/0",
+			"input": "function { a; } \"$@\""
+		},
+		{
+			"id": "fileTests/111/1",
+			"input": "function { a } \"$@\""
+		},
+		{
+			"id": "fileTests/112/0",
+			"input": "() (a) b"
+		},
+		{
+			"id": "fileTests/113/0",
+			"input": "() { a; } b c >d"
+		},
+		{
+			"id": "fileTests/113/1",
+			"input": "() { a; } b >d c"
+		},
+		{
+			"id": "fileTests/114/0",
+			"input": "function { a; } b >c"
+		},
+		{
+			"id": "fileTests/115/0",
+			"input": "() { a; } b && c"
+		},
+		{
+			"id": "fileTests/115/1",
+			"input": "() { a } b&&c"
+		},
+		{
+			"id": "fileTests/116/0",
+			"input": "{ () { a; } b; }"
+		},
+		{
+			"id": "fileTests/116/1",
+			"input": "{ () { a } b }"
+		},
+		{
+			"id": "fileTests/117/0",
+			"input": "a=b foo=$bar foo=start$bar"
+		},
+		{
+			"id": "fileTests/118/0",
+			"input": "a=\"\nbar\""
+		},
+		{
+			"id": "fileTests/119/0",
+			"input": "A_3a= foo"
+		},
+		{
+			"id": "fileTests/120/0",
+			"input": "a=b=c"
+		},
+		{
+			"id": "fileTests/121/0",
+			"input": "à=b foo"
+		},
+		{
+			"id": "fileTests/122/0",
+			"input": "foo >a >>b <c"
+		},
+		{
+			"id": "fileTests/122/1",
+			"input": "foo > a >> b < c"
+		},
+		{
+			"id": "fileTests/122/2",
+			"input": ">a >>b <c foo"
+		},
+		{
+			"id": "fileTests/123/0",
+			"input": "foo bar >a"
+		},
+		{
+			"id": "fileTests/123/1",
+			"input": "foo >a bar"
+		},
+		{
+			"id": "fileTests/124/0",
+			"input": ">a >\\b"
+		},
+		{
+			"id": "fileTests/125/0",
+			"input": ">a\n>b"
+		},
+		{
+			"id": "fileTests/125/1",
+			"input": ">a; >b"
+		},
+		{
+			"id": "fileTests/126/0",
+			"input": "foo1\nfoo2 >r2"
+		},
+		{
+			"id": "fileTests/126/1",
+			"input": "foo1; >r2 foo2"
+		},
+		{
+			"id": "fileTests/127/0",
+			"input": "foo >bar$(etc)"
+		},
+		{
+			"id": "fileTests/127/1",
+			"input": "foo >b\\\nar`etc`"
+		},
+		{
+			"id": "fileTests/128/0",
+			"input": "a=b c=d foo >x <y"
+		},
+		{
+			"id": "fileTests/128/1",
+			"input": "a=b c=d >x <y foo"
+		},
+		{
+			"id": "fileTests/128/2",
+			"input": ">x a=b c=d <y foo"
+		},
+		{
+			"id": "fileTests/128/3",
+			"input": ">x <y a=b c=d foo"
+		},
+		{
+			"id": "fileTests/128/4",
+			"input": "a=b >x c=d foo <y"
+		},
+		{
+			"id": "fileTests/129/0",
+			"input": "foo <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/129/1",
+			"input": "foo <<EOF \nbar\nEOF"
+		},
+		{
+			"id": "fileTests/129/2",
+			"input": "foo <<EOF\t\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/129/3",
+			"input": "foo <<EOF\r\nbar\r\nEOF\r\n"
+		},
+		{
+			"id": "fileTests/130/0",
+			"input": "foo <<EOF\n\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/131/0",
+			"input": "foo <<EOF\nbar\n\nEOF"
+		},
+		{
+			"id": "fileTests/132/0",
+			"input": "foo <<EOF\n1\n2\n3\nEOF"
+		},
+		{
+			"id": "fileTests/133/0",
+			"input": "foo <<ÉOF\nbar\nÉOF"
+		},
+		{
+			"id": "fileTests/134/0",
+			"input": "foo <<ÉOF\nÉOF"
+		},
+		{
+			"id": "fileTests/135/0",
+			"input": "foo <<'ÉOF'\nbar\nÉOF"
+		},
+		{
+			"id": "fileTests/136/0",
+			"input": "a <<EOF\nfoo$bar\nEOF"
+		},
+		{
+			"id": "fileTests/137/0",
+			"input": "a <<EOF\n\"$bar\"\nEOF"
+		},
+		{
+			"id": "fileTests/138/0",
+			"input": "a <<EOF\n$''$bar\nEOF"
+		},
+		{
+			"id": "fileTests/139/0",
+			"input": "a <<EOF\n$(b)\nc\nEOF"
+		},
+		{
+			"id": "fileTests/139/1",
+			"input": "a <<EOF\n`b`\nc\nEOF"
+		},
+		{
+			"id": "fileTests/140/0",
+			"input": "a <<EOF\nfoo$(bar)baz\nEOF"
+		},
+		{
+			"id": "fileTests/140/1",
+			"input": "a <<EOF\nfoo`bar`baz\nEOF"
+		},
+		{
+			"id": "fileTests/141/0",
+			"input": "a <<EOF\n\\${\nEOF"
+		},
+		{
+			"id": "fileTests/142/0",
+			"input": "{\n\tfoo <<EOF\nbar\nEOF\n}"
+		},
+		{
+			"id": "fileTests/142/1",
+			"input": "{ foo <<EOF\nbar\nEOF\n}"
+		},
+		{
+			"id": "fileTests/143/0",
+			"input": "$(\n\tfoo <<EOF\nbar\nEOF\n)"
+		},
+		{
+			"id": "fileTests/143/1",
+			"input": "$(foo <<EOF\nbar\nEOF\n)"
+		},
+		{
+			"id": "fileTests/143/2",
+			"input": "`\nfoo <<EOF\nbar\nEOF\n`"
+		},
+		{
+			"id": "fileTests/143/3",
+			"input": "`foo <<EOF\nbar\nEOF`"
+		},
+		{
+			"id": "fileTests/144/0",
+			"input": "foo <<EOF\nbar\nEOF$(oops)\nEOF"
+		},
+		{
+			"id": "fileTests/144/1",
+			"input": "foo <<EOF\nbar\nEOF`oops`\nEOF"
+		},
+		{
+			"id": "fileTests/145/0",
+			"input": "foo <<EOF\nbar\nNOTEOF$(oops)\nEOF"
+		},
+		{
+			"id": "fileTests/145/1",
+			"input": "foo <<EOF\nbar\nNOTEOF`oops`\nEOF"
+		},
+		{
+			"id": "fileTests/146/0",
+			"input": "$(\n\tfoo <<'EOF'\nbar\nEOF\n)"
+		},
+		{
+			"id": "fileTests/146/1",
+			"input": "$(foo <<'EOF'\nbar\nEOF\n)"
+		},
+		{
+			"id": "fileTests/146/2",
+			"input": "`\nfoo <<'EOF'\nbar\nEOF\n`"
+		},
+		{
+			"id": "fileTests/146/3",
+			"input": "`foo <<'EOF'\nbar\nEOF`"
+		},
+		{
+			"id": "fileTests/147/0",
+			"input": "foo <<'EOF'\nbar\nEOF`oops`\nEOF"
+		},
+		{
+			"id": "fileTests/148/0",
+			"input": "foo <<'EOF'\nbar\nNOTEOF`oops`\nEOF"
+		},
+		{
+			"id": "fileTests/149/0",
+			"input": "$(<foo)"
+		},
+		{
+			"id": "fileTests/149/1",
+			"input": "`<foo`"
+		},
+		{
+			"id": "fileTests/150/0",
+			"input": "foo <<EOF >f\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/151/0",
+			"input": "foo <<EOF && {\nbar\nEOF\n\tetc\n}"
+		},
+		{
+			"id": "fileTests/152/0",
+			"input": "$(\n\tfoo\n) <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/152/1",
+			"input": "<<EOF $(\n\tfoo\n)\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/153/0",
+			"input": "$(\n\tfoo\n) <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/153/1",
+			"input": "`\n\tfoo\n` <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/153/2",
+			"input": "<<EOF `\n\tfoo\n`\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/154/0",
+			"input": "$((foo)) <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/154/1",
+			"input": "<<EOF $((\n\tfoo\n))\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/155/0",
+			"input": "if true; then\n\tfoo <<-EOF\n\t\tbar\n\tEOF\nfi"
+		},
+		{
+			"id": "fileTests/156/0",
+			"input": "if true; then\n\tfoo <<-EOF\n\tEOF\nfi"
+		},
+		{
+			"id": "fileTests/157/0",
+			"input": "foo <<EOF\nEOF_body\nEOF\nfoo2"
+		},
+		{
+			"id": "fileTests/158/0",
+			"input": "foo <<FOOBAR\nbar\nFOOBAR"
+		},
+		{
+			"id": "fileTests/159/0",
+			"input": "foo <<\"EOF\"\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/160/0",
+			"input": "foo <<'EOF'\nEOF_body\nEOF\nfoo2"
+		},
+		{
+			"id": "fileTests/161/0",
+			"input": "foo <<'EOF'\n${\nEOF"
+		},
+		{
+			"id": "fileTests/162/0",
+			"input": "foo <<'EOF'\nEOF"
+		},
+		{
+			"id": "fileTests/163/0",
+			"input": "foo <<\"EOF\"2\n$bar\nEOF2"
+		},
+		{
+			"id": "fileTests/164/0",
+			"input": "foo <<'EOF'2\n$bar\nEOF2"
+		},
+		{
+			"id": "fileTests/165/0",
+			"input": "foo <<\"EOF\\$\\`\\\"\\\\\\q\"\nbar\nEOF$`\"\\\\q\nEOF\\$\\`\\\"\\\\\\q"
+		},
+		{
+			"id": "fileTests/166/0",
+			"input": "foo <<\\EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/167/0",
+			"input": "foo <<EOF\nbar\\\nbaz\nEOF"
+		},
+		{
+			"id": "fileTests/168/0",
+			"input": "foo <<'EOF'\nbar\\\nEOF"
+		},
+		{
+			"id": "fileTests/168/1",
+			"input": "foo <<'EOF'\nbar\\\r\nEOF"
+		},
+		{
+			"id": "fileTests/168/2",
+			"input": "foo <<'EOF'\nbar\\\r\nEOF\r\n"
+		},
+		{
+			"id": "fileTests/169/0",
+			"input": "foo <<-EOF\n\tbar\nEOF"
+		},
+		{
+			"id": "fileTests/169/1",
+			"input": "foo <<-EOF\r\n\tbar\r\nEOF\r\n"
+		},
+		{
+			"id": "fileTests/170/0",
+			"input": "foo <<EOF\nEOF"
+		},
+		{
+			"id": "fileTests/171/0",
+			"input": "foo <<-EOF\nEOF"
+		},
+		{
+			"id": "fileTests/172/0",
+			"input": "foo <<-EOF\n\tbar\nEOF"
+		},
+		{
+			"id": "fileTests/173/0",
+			"input": "foo <<-'EOF'\n\tbar\nEOF"
+		},
+		{
+			"id": "fileTests/174/0",
+			"input": "foo <<EOF"
+		},
+		{
+			"id": "fileTests/174/1",
+			"input": "foo <<EOF\n"
+		},
+		{
+			"id": "fileTests/174/2",
+			"input": "foo <<EOF\n\\\n"
+		},
+		{
+			"id": "fileTests/175/0",
+			"input": "foo <<EOF\nbar"
+		},
+		{
+			"id": "fileTests/175/1",
+			"input": "foo <<EOF\nbar\\\n"
+		},
+		{
+			"id": "fileTests/176/0",
+			"input": "foo <<EOF\nbar\n"
+		},
+		{
+			"id": "fileTests/177/0",
+			"input": "foo <<EOF\n$bar"
+		},
+		{
+			"id": "fileTests/178/0",
+			"input": "foo <<EOF\nbar\\"
+		},
+		{
+			"id": "fileTests/179/0",
+			"input": "foo <<'EOF'\nbar\\"
+		},
+		{
+			"id": "fileTests/180/0",
+			"input": "foo <<-EOF\n\tbar"
+		},
+		{
+			"id": "fileTests/181/0",
+			"input": "foo <<-EOF\n\tbar\n\t"
+		},
+		{
+			"id": "fileTests/182/0",
+			"input": "foo <<-EOF\n$bar\t"
+		},
+		{
+			"id": "fileTests/183/0",
+			"input": "foo <<EOF || bar <<EOF\nbaz\nEOF"
+		},
+		{
+			"id": "fileTests/184/0",
+			"input": "`foo <<EOF\nbar`"
+		},
+		{
+			"id": "fileTests/185/0",
+			"input": "`foo <<'EOF'\nbar`"
+		},
+		{
+			"id": "fileTests/186/0",
+			"input": "`foo <<EOF`"
+		},
+		{
+			"id": "fileTests/187/0",
+			"input": "`foo <<EOF`\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/188/0",
+			"input": "f1 <<EOF1\nh1\nEOF1\nf2 <<EOF2\nh2\nEOF2"
+		},
+		{
+			"id": "fileTests/188/1",
+			"input": "f1 <<EOF1; f2 <<EOF2\nh1\nEOF1\nh2\nEOF2"
+		},
+		{
+			"id": "fileTests/189/0",
+			"input": "a <<EOF\nfoo\nEOF\nb\nb\nb\nb\nb\nb\nb\nb\nb"
+		},
+		{
+			"id": "fileTests/189/1",
+			"input": "a <<EOF;b;b;b;b;b;b;b;b;b\nfoo\nEOF"
+		},
+		{
+			"id": "fileTests/190/0",
+			"input": "foo \"\narg\" <<EOF\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/190/1",
+			"input": "foo <<EOF \"\narg\"\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/191/0",
+			"input": "foo >&2 <&0 2>file 345>file <>f2"
+		},
+		{
+			"id": "fileTests/192/0",
+			"input": "foo bar >file"
+		},
+		{
+			"id": "fileTests/192/1",
+			"input": "foo bar>file"
+		},
+		{
+			"id": "fileTests/193/0",
+			"input": "true &>a"
+		},
+		{
+			"id": "fileTests/194/0",
+			"input": "true &>>b"
+		},
+		{
+			"id": "fileTests/195/0",
+			"input": "foo 2>file bar"
+		},
+		{
+			"id": "fileTests/195/1",
+			"input": "2>file foo bar"
+		},
+		{
+			"id": "fileTests/196/0",
+			"input": "a >f1\nb >f2"
+		},
+		{
+			"id": "fileTests/196/1",
+			"input": "a >f1; b >f2"
+		},
+		{
+			"id": "fileTests/197/0",
+			"input": "foo >|bar"
+		},
+		{
+			"id": "fileTests/198/0",
+			"input": "foo >>|a &>|b &>>|c"
+		},
+		{
+			"id": "fileTests/199/0",
+			"input": "foo >|a >>|b &>|c &>>|d"
+		},
+		{
+			"id": "fileTests/199/1",
+			"input": "foo >!a >>!b &>!c &>>!d"
+		},
+		{
+			"id": "fileTests/200/0",
+			"input": "foo &>|a &>>c &>>|d"
+		},
+		{
+			"id": "fileTests/200/1",
+			"input": "foo >&|a >>&c >>&|d"
+		},
+		{
+			"id": "fileTests/200/2",
+			"input": "foo &>!a >>&c >>&!d"
+		},
+		{
+			"id": "fileTests/200/3",
+			"input": "foo >&!a >>&c >>&!d"
+		},
+		{
+			"id": "fileTests/201/0",
+			"input": "foo <<<input"
+		},
+		{
+			"id": "fileTests/201/1",
+			"input": "foo <<< input"
+		},
+		{
+			"id": "fileTests/202/0",
+			"input": "foo <<<\"spaced input\""
+		},
+		{
+			"id": "fileTests/202/1",
+			"input": "foo <<< \"spaced input\""
+		},
+		{
+			"id": "fileTests/203/0",
+			"input": "foo >(foo)"
+		},
+		{
+			"id": "fileTests/204/0",
+			"input": "foo < <(foo)"
+		},
+		{
+			"id": "fileTests/205/0",
+			"input": "a<(b) c>(d)"
+		},
+		{
+			"id": "fileTests/206/0",
+			"input": "foo =(bar)"
+		},
+		{
+			"id": "fileTests/207/0",
+			"input": "foo {fd}<f"
+		},
+		{
+			"id": "fileTests/208/0",
+			"input": "foo {fds[3]}<f"
+		},
+		{
+			"id": "fileTests/209/0",
+			"input": "! foo"
+		},
+		{
+			"id": "fileTests/210/0",
+			"input": "foo &\nbar"
+		},
+		{
+			"id": "fileTests/210/1",
+			"input": "foo & bar"
+		},
+		{
+			"id": "fileTests/210/2",
+			"input": "foo&bar"
+		},
+		{
+			"id": "fileTests/211/0",
+			"input": "! if foo; then bar; fi >/dev/null &"
+		},
+		{
+			"id": "fileTests/211/1",
+			"input": "! if foo; then bar; fi>/dev/null&"
+		},
+		{
+			"id": "fileTests/212/0",
+			"input": "if foo; then bar; fi >/dev/null"
+		},
+		{
+			"id": "fileTests/212/1",
+			"input": ">/dev/null if foo; then bar; fi"
+		},
+		{
+			"id": "fileTests/213/0",
+			"input": "! foo && bar"
+		},
+		{
+			"id": "fileTests/214/0",
+			"input": "! foo | bar"
+		},
+		{
+			"id": "fileTests/215/0",
+			"input": "a && b &\nc"
+		},
+		{
+			"id": "fileTests/215/1",
+			"input": "a && b & c"
+		},
+		{
+			"id": "fileTests/216/0",
+			"input": "a | b &"
+		},
+		{
+			"id": "fileTests/217/0",
+			"input": "foo#bar"
+		},
+		{
+			"id": "fileTests/218/0",
+			"input": "$foo#bar foo#$bar"
+		},
+		{
+			"id": "fileTests/219/0",
+			"input": "$(foo)#bar"
+		},
+		{
+			"id": "fileTests/219/1",
+			"input": "`foo`#bar"
+		},
+		{
+			"id": "fileTests/220/0",
+			"input": "{ foo } }; }"
+		},
+		{
+			"id": "fileTests/221/0",
+			"input": "foo {"
+		},
+		{
+			"id": "fileTests/222/0",
+			"input": "foo }"
+		},
+		{
+			"id": "fileTests/223/0",
+			"input": "{ foo; }"
+		},
+		{
+			"id": "fileTests/223/1",
+			"input": "{ foo }"
+		},
+		{
+			"id": "fileTests/224/0",
+			"input": "{ }"
+		},
+		{
+			"id": "fileTests/225/0",
+			"input": "{ }"
+		},
+		{
+			"id": "fileTests/225/1",
+			"input": "{}"
+		},
+		{
+			"id": "fileTests/226/0",
+			"input": "{foo; bar baz}"
+		},
+		{
+			"id": "fileTests/227/0",
+			"input": "{foo bar;}"
+		},
+		{
+			"id": "fileTests/228/0",
+			"input": "{foo bar }"
+		},
+		{
+			"id": "fileTests/229/0",
+			"input": "{ foo bar}"
+		},
+		{
+			"id": "fileTests/230/0",
+			"input": "{ foo $bar \"baz\"}"
+		},
+		{
+			"id": "fileTests/231/0",
+			"input": "{ foo {a,b} {$c,d} x{$(e),f}}"
+		},
+		{
+			"id": "fileTests/232/0",
+			"input": "{foo,bar}"
+		},
+		{
+			"id": "fileTests/233/0",
+			"input": "{true,x} y"
+		},
+		{
+			"id": "fileTests/234/0",
+			"input": "echo a}"
+		},
+		{
+			"id": "fileTests/235/0",
+			"input": "echo {a} a}b }a"
+		},
+		{
+			"id": "fileTests/236/0",
+			"input": "{foo bar}}"
+		},
+		{
+			"id": "fileTests/237/0",
+			"input": "{{true}}"
+		},
+		{
+			"id": "fileTests/238/0",
+			"input": "{{true}} }"
+		},
+		{
+			"id": "fileTests/239/0",
+			"input": "{{true} }"
+		},
+		{
+			"id": "fileTests/240/0",
+			"input": "{ { true; }}"
+		},
+		{
+			"id": "fileTests/241/0",
+			"input": ">f {true}"
+		},
+		{
+			"id": "fileTests/242/0",
+			"input": "echo a}<1-5>"
+		},
+		{
+			"id": "fileTests/243/0",
+			"input": "{ a{$(b})}"
+		},
+		{
+			"id": "fileTests/244/0",
+			"input": "`{foo bar}`"
+		},
+		{
+			"id": "fileTests/245/0",
+			"input": "{ foo {a>f}"
+		},
+		{
+			"id": "fileTests/246/0",
+			"input": "{ local a b=c }"
+		},
+		{
+			"id": "fileTests/247/0",
+			"input": "{ local a}"
+		},
+		{
+			"id": "fileTests/248/0",
+			"input": "x=a}"
+		},
+		{
+			"id": "fileTests/249/0",
+			"input": "{ x=a} }"
+		},
+		{
+			"id": "fileTests/250/0",
+			"input": "{ local a=b}"
+		},
+		{
+			"id": "fileTests/251/0",
+			"input": "for i in a}; do true; done"
+		},
+		{
+			"id": "fileTests/252/0",
+			"input": "case i in a}) true ;; esac"
+		},
+		{
+			"id": "fileTests/253/0",
+			"input": "case i in a) {foo};; esac"
+		},
+		{
+			"id": "fileTests/254/0",
+			"input": "{ foo a=b}"
+		},
+		{
+			"id": "fileTests/255/0",
+			"input": "{ x[1]=a} }"
+		},
+		{
+			"id": "fileTests/256/0",
+			"input": "{ x[1]=a}"
+		},
+		{
+			"id": "fileTests/257/0",
+			"input": "{ local a=b} }"
+		},
+		{
+			"id": "fileTests/258/0",
+			"input": "{ let x=1}"
+		},
+		{
+			"id": "fileTests/259/0",
+			"input": "{ [[ a ]]}"
+		},
+		{
+			"id": "fileTests/260/0",
+			"input": "{ foo <<EOF}\nbar\nEOF"
+		},
+		{
+			"id": "fileTests/261/0",
+			"input": "{ foo; } always { bar; }"
+		},
+		{
+			"id": "fileTests/261/1",
+			"input": "{ foo; } always\n{ bar; }"
+		},
+		{
+			"id": "fileTests/261/2",
+			"input": "{ foo; } always ; ;\n{ bar; }"
+		},
+		{
+			"id": "fileTests/262/0",
+			"input": "{foo} always {bar}"
+		},
+		{
+			"id": "fileTests/263/0",
+			"input": "{\n\tfoo\n} always {\n\tbar\n}"
+		},
+		{
+			"id": "fileTests/263/1",
+			"input": "{\nfoo\n} always {\nbar\n}"
+		},
+		{
+			"id": "fileTests/264/0",
+			"input": "{ } always { }"
+		},
+		{
+			"id": "fileTests/264/1",
+			"input": "{} always {}"
+		},
+		{
+			"id": "fileTests/264/2",
+			"input": "{ } always\n{ }"
+		},
+		{
+			"id": "fileTests/265/0",
+			"input": "{ foo; } always { bar; } >a | baz"
+		},
+		{
+			"id": "fileTests/266/0",
+			"input": "( )"
+		},
+		{
+			"id": "fileTests/267/0",
+			"input": "if; then; fi"
+		},
+		{
+			"id": "fileTests/268/0",
+			"input": "if foo; then; fi"
+		},
+		{
+			"id": "fileTests/269/0",
+			"input": "while; do exit; done"
+		},
+		{
+			"id": "fileTests/269/1",
+			"input": "while\ndo exit\ndone"
+		},
+		{
+			"id": "fileTests/270/0",
+			"input": "while false; do; done"
+		},
+		{
+			"id": "fileTests/271/0",
+			"input": "$({ foo; })"
+		},
+		{
+			"id": "fileTests/272/0",
+			"input": "$( (echo foo bar) )"
+		},
+		{
+			"id": "fileTests/272/1",
+			"input": "$( (echo foo bar))"
+		},
+		{
+			"id": "fileTests/272/2",
+			"input": "`(echo foo bar)`"
+		},
+		{
+			"id": "fileTests/273/0",
+			"input": "$()"
+		},
+		{
+			"id": "fileTests/274/0",
+			"input": "$(\n\t(a)\n\tb\n)"
+		},
+		{
+			"id": "fileTests/274/1",
+			"input": "$( (a); b)"
+		},
+		{
+			"id": "fileTests/274/2",
+			"input": "`(a); b`"
+		},
+		{
+			"id": "fileTests/275/0",
+			"input": "$(echo \\')"
+		},
+		{
+			"id": "fileTests/275/1",
+			"input": "`echo \\\\'`"
+		},
+		{
+			"id": "fileTests/276/0",
+			"input": "$(echo \\\\)"
+		},
+		{
+			"id": "fileTests/276/1",
+			"input": "`echo \\\\\\\\`"
+		},
+		{
+			"id": "fileTests/277/0",
+			"input": "$(echo '\\' 'a\\b' \"\\\\\" \"a\\a\")"
+		},
+		{
+			"id": "fileTests/277/1",
+			"input": "`echo '\\' 'a\\\\b' \"\\\\\\\\\" \"a\\a\"`"
+		},
+		{
+			"id": "fileTests/278/0",
+			"input": "$(echo $(x))"
+		},
+		{
+			"id": "fileTests/278/1",
+			"input": "`echo \\`x\\``"
+		},
+		{
+			"id": "fileTests/279/0",
+			"input": "$($(foo bar))"
+		},
+		{
+			"id": "fileTests/279/1",
+			"input": "`\\`foo bar\\``"
+		},
+		{
+			"id": "fileTests/280/0",
+			"input": "\"$(echo \"foobar\")\""
+		},
+		{
+			"id": "fileTests/280/1",
+			"input": "\"`echo \\\"foobar\\\"`\""
+		},
+		{
+			"id": "fileTests/281/0",
+			"input": "\"$(echo '\"')\""
+		},
+		{
+			"id": "fileTests/281/1",
+			"input": "\"`echo '\\\"'`\""
+		},
+		{
+			"id": "fileTests/282/0",
+			"input": "$( (a) | b)"
+		},
+		{
+			"id": "fileTests/283/0",
+			"input": "\"$( (foo) )\""
+		},
+		{
+			"id": "fileTests/284/0",
+			"input": "\"foo\\\nbar\""
+		},
+		{
+			"id": "fileTests/285/0",
+			"input": "'foo\\\nbar'"
+		},
+		{
+			"id": "fileTests/285/1",
+			"input": "'foo\\\r\nbar'"
+		},
+		{
+			"id": "fileTests/286/0",
+			"input": "$({ echo; })"
+		},
+		{
+			"id": "fileTests/286/1",
+			"input": "`{ echo; }`"
+		},
+		{
+			"id": "fileTests/287/0",
+			"input": "{foo}"
+		},
+		{
+			"id": "fileTests/288/0",
+			"input": "{\"foo\""
+		},
+		{
+			"id": "fileTests/289/0",
+			"input": "foo\"bar\""
+		},
+		{
+			"id": "fileTests/289/1",
+			"input": "fo\\\no\"bar\""
+		},
+		{
+			"id": "fileTests/289/2",
+			"input": "fo\\\r\no\"bar\""
+		},
+		{
+			"id": "fileTests/290/0",
+			"input": "!foo"
+		},
+		{
+			"id": "fileTests/291/0",
+			"input": "$(foo bar)"
+		},
+		{
+			"id": "fileTests/291/1",
+			"input": "`foo bar`"
+		},
+		{
+			"id": "fileTests/292/0",
+			"input": "$(foo | bar)"
+		},
+		{
+			"id": "fileTests/292/1",
+			"input": "`foo | bar`"
+		},
+		{
+			"id": "fileTests/293/0",
+			"input": "$(foo | >f)"
+		},
+		{
+			"id": "fileTests/293/1",
+			"input": "`foo | >f`"
+		},
+		{
+			"id": "fileTests/294/0",
+			"input": "$(foo $(b1 b2))"
+		},
+		{
+			"id": "fileTests/295/0",
+			"input": "\"$(foo \"bar\")\""
+		},
+		{
+			"id": "fileTests/296/0",
+			"input": "$(foo)"
+		},
+		{
+			"id": "fileTests/296/1",
+			"input": "`fo\\\no`"
+		},
+		{
+			"id": "fileTests/297/0",
+			"input": "foo $(bar)"
+		},
+		{
+			"id": "fileTests/297/1",
+			"input": "foo `bar`"
+		},
+		{
+			"id": "fileTests/298/0",
+			"input": "$(foo 'bar')"
+		},
+		{
+			"id": "fileTests/298/1",
+			"input": "`foo 'bar'`"
+		},
+		{
+			"id": "fileTests/299/0",
+			"input": "$(foo \"bar\")"
+		},
+		{
+			"id": "fileTests/299/1",
+			"input": "`foo \"bar\"`"
+		},
+		{
+			"id": "fileTests/300/0",
+			"input": "\"$(foo \"bar\")\""
+		},
+		{
+			"id": "fileTests/300/1",
+			"input": "\"`foo \"bar\"`\""
+		},
+		{
+			"id": "fileTests/301/0",
+			"input": "${ foo;}"
+		},
+		{
+			"id": "fileTests/301/1",
+			"input": "${\nfoo; }"
+		},
+		{
+			"id": "fileTests/301/2",
+			"input": "${\n\tfoo; }"
+		},
+		{
+			"id": "fileTests/301/3",
+			"input": "${\tfoo;}"
+		},
+		{
+			"id": "fileTests/302/0",
+			"input": "${\n\tfoo\n\tbar\n}"
+		},
+		{
+			"id": "fileTests/302/1",
+			"input": "${ foo; bar;}"
+		},
+		{
+			"id": "fileTests/303/0",
+			"input": "${|foo;}"
+		},
+		{
+			"id": "fileTests/303/1",
+			"input": "${| foo; }"
+		},
+		{
+			"id": "fileTests/304/0",
+			"input": "${|\n\tfoo\n\tbar\n}"
+		},
+		{
+			"id": "fileTests/304/1",
+			"input": "${|foo; bar;}"
+		},
+		{
+			"id": "fileTests/305/0",
+			"input": "\"${ foo;}\""
+		},
+		{
+			"id": "fileTests/305/1",
+			"input": "\"${ foo; }\""
+		},
+		{
+			"id": "fileTests/306/0",
+			"input": "\"${|foo;}\""
+		},
+		{
+			"id": "fileTests/306/1",
+			"input": "\"${| foo; }\""
+		},
+		{
+			"id": "fileTests/307/0",
+			"input": "${ foo;}bar"
+		},
+		{
+			"id": "fileTests/308/0",
+			"input": "\"$foo\""
+		},
+		{
+			"id": "fileTests/309/0",
+			"input": "\"#foo\""
+		},
+		{
+			"id": "fileTests/310/0",
+			"input": "$2foo $3[bar] \"ba$4z\""
+		},
+		{
+			"id": "fileTests/311/0",
+			"input": "$@a $*a $#a $$a $?a $!a $-a $0a $30a $_a"
+		},
+		{
+			"id": "fileTests/312/0",
+			"input": "\"$!\""
+		},
+		{
+			"id": "fileTests/313/0",
+			"input": "\"$#\" $#\"$foo\" $#"
+		},
+		{
+			"id": "fileTests/314/0",
+			"input": "\"$+\" $+\"$foo\" $+"
+		},
+		{
+			"id": "fileTests/315/0",
+			"input": "\"$%\" $%\"$foo\" $%foo"
+		},
+		{
+			"id": "fileTests/316/0",
+			"input": "$=\"$foo\" $~\"$foo\" $^\"$foo\""
+		},
+		{
+			"id": "fileTests/317/0",
+			"input": "$"
+		},
+		{
+			"id": "fileTests/317/1",
+			"input": "$ #"
+		},
+		{
+			"id": "fileTests/318/0",
+			"input": "${@} ${*} ${#} ${$} ${?} ${!} ${0} ${29} ${-}"
+		},
+		{
+			"id": "fileTests/319/0",
+			"input": "${#$} ${#@} ${#*} ${##}"
+		},
+		{
+			"id": "fileTests/320/0",
+			"input": "${foo}"
+		},
+		{
+			"id": "fileTests/321/0",
+			"input": "${}"
+		},
+		{
+			"id": "fileTests/322/0",
+			"input": "${foo}\"bar\""
+		},
+		{
+			"id": "fileTests/323/0",
+			"input": "$a/b $a-b $a:b $a}b $a]b $a.b $a,b $a*b $a_b $a2b"
+		},
+		{
+			"id": "fileTests/324/0",
+			"input": "$aàb $àb $,b"
+		},
+		{
+			"id": "fileTests/325/0",
+			"input": "$à"
+		},
+		{
+			"id": "fileTests/325/1",
+			"input": "$\\\nà"
+		},
+		{
+			"id": "fileTests/325/2",
+			"input": "$\\\r\nà"
+		},
+		{
+			"id": "fileTests/326/0",
+			"input": "$foobar"
+		},
+		{
+			"id": "fileTests/326/1",
+			"input": "$foo\\\nbar"
+		},
+		{
+			"id": "fileTests/327/0",
+			"input": "$foo\\bar"
+		},
+		{
+			"id": "fileTests/328/0",
+			"input": "echo -e \"$foo\\nbar\""
+		},
+		{
+			"id": "fileTests/329/0",
+			"input": "${foo-bar}"
+		},
+		{
+			"id": "fileTests/330/0",
+			"input": "${foo+}\"bar\""
+		},
+		{
+			"id": "fileTests/331/0",
+			"input": "${foo:=<\"bar\"}"
+		},
+		{
+			"id": "fileTests/332/0",
+			"input": "${foo:=b${c}$(d)}"
+		},
+		{
+			"id": "fileTests/332/1",
+			"input": "${foo:=b${c}`d`}"
+		},
+		{
+			"id": "fileTests/333/0",
+			"input": "${foo?\"${bar}\"}"
+		},
+		{
+			"id": "fileTests/334/0",
+			"input": "${foo:?bar1 bar2}"
+		},
+		{
+			"id": "fileTests/335/0",
+			"input": "${a:+b}${a:-b}${a=b}"
+		},
+		{
+			"id": "fileTests/336/0",
+			"input": "${3:-'$x'}"
+		},
+		{
+			"id": "fileTests/337/0",
+			"input": "${@:-$x}"
+		},
+		{
+			"id": "fileTests/338/0",
+			"input": "${var#*'=\"'}"
+		},
+		{
+			"id": "fileTests/339/0",
+			"input": "${var/'a'/b'c'd}"
+		},
+		{
+			"id": "fileTests/340/0",
+			"input": "${foo%bar}${foo%%bar*}"
+		},
+		{
+			"id": "fileTests/341/0",
+			"input": "${3#bar}${-##bar*}"
+		},
+		{
+			"id": "fileTests/342/0",
+			"input": "${foo%?}"
+		},
+		{
+			"id": "fileTests/343/0",
+			"input": "foo=force_expansion\necho ${foo:#bar}"
+		},
+		{
+			"id": "fileTests/344/0",
+			"input": "foo=force_expansion\necho ${foo:|bar}"
+		},
+		{
+			"id": "fileTests/345/0",
+			"input": "foo=force_expansion\necho ${foo:*bar}"
+		},
+		{
+			"id": "fileTests/346/0",
+			"input": "${foo[1]}"
+		},
+		{
+			"id": "fileTests/347/0",
+			"input": "${foo[ 1 ]}"
+		},
+		{
+			"id": "fileTests/348/0",
+			"input": "${foo[ 1 ]}"
+		},
+		{
+			"id": "fileTests/349/0",
+			"input": "$foo[1]"
+		},
+		{
+			"id": "fileTests/350/0",
+			"input": "a$foo[1]b"
+		},
+		{
+			"id": "fileTests/351/0",
+			"input": "\"a$foo[1]b\""
+		},
+		{
+			"id": "fileTests/352/0",
+			"input": "${foo[1,3]}"
+		},
+		{
+			"id": "fileTests/352/1",
+			"input": "${foo[ 1 , 3 ]}"
+		},
+		{
+			"id": "fileTests/353/0",
+			"input": "${foo[1,3]}"
+		},
+		{
+			"id": "fileTests/354/0",
+			"input": "${foo[ 1 , 3 ]}"
+		},
+		{
+			"id": "fileTests/355/0",
+			"input": "${var[1][2]}"
+		},
+		{
+			"id": "fileTests/356/0",
+			"input": "${var[(r)f*][1,2][-1]:-x}"
+		},
+		{
+			"id": "fileTests/357/0",
+			"input": "${var[1][2]:u}"
+		},
+		{
+			"id": "fileTests/358/0",
+			"input": "${a:(1):(2)}"
+		},
+		{
+			"id": "fileTests/359/0",
+			"input": "${args[cmd,#]}"
+		},
+		{
+			"id": "fileTests/360/0",
+			"input": "${foo[1,-1]}"
+		},
+		{
+			"id": "fileTests/361/0",
+			"input": "${@[-1]}"
+		},
+		{
+			"id": "fileTests/362/0",
+			"input": "${*[-1]}"
+		},
+		{
+			"id": "fileTests/363/0",
+			"input": "$foo[1,3]"
+		},
+		{
+			"id": "fileTests/364/0",
+			"input": "${signals[(i)QUIT]}"
+		},
+		{
+			"id": "fileTests/365/0",
+			"input": "${ZSH_VERSION[(s:.:w)2]}"
+		},
+		{
+			"id": "fileTests/366/0",
+			"input": "$foo[(r)pattern]"
+		},
+		{
+			"id": "fileTests/367/0",
+			"input": "${array[(i)]}"
+		},
+		{
+			"id": "fileTests/368/0",
+			"input": "${array[(i)--]}"
+		},
+		{
+			"id": "fileTests/369/0",
+			"input": "${array[(R)/*]}"
+		},
+		{
+			"id": "fileTests/370/0",
+			"input": "${array[(i)&]}"
+		},
+		{
+			"id": "fileTests/371/0",
+			"input": "${foo[(r)ab,(r)cd]}"
+		},
+		{
+			"id": "fileTests/372/0",
+			"input": "${foo[(n:2:)4]}"
+		},
+		{
+			"id": "fileTests/373/0",
+			"input": "${foo[(1+1)*2]}"
+		},
+		{
+			"id": "fileTests/374/0",
+			"input": "${foo[(1+1)*$x]}"
+		},
+		{
+			"id": "fileTests/375/0",
+			"input": "${foo[a\\\nb]}"
+		},
+		{
+			"id": "fileTests/376/0",
+			"input": "${foo[(e)*]}"
+		},
+		{
+			"id": "fileTests/377/0",
+			"input": "${foo[-1]}"
+		},
+		{
+			"id": "fileTests/378/0",
+			"input": "${foo[i + 1]}"
+		},
+		{
+			"id": "fileTests/379/0",
+			"input": "${foo[foo-bar]}"
+		},
+		{
+			"id": "fileTests/380/0",
+			"input": "$foo[foo-bar]"
+		},
+		{
+			"id": "fileTests/381/0",
+			"input": "${foo[foo:bar]}"
+		},
+		{
+			"id": "fileTests/382/0",
+			"input": "${foo[foo bar]}"
+		},
+		{
+			"id": "fileTests/383/0",
+			"input": "${foo[x?y!z]}"
+		},
+		{
+			"id": "fileTests/384/0",
+			"input": "${foo[a\\]b]}"
+		},
+		{
+			"id": "fileTests/385/0",
+			"input": "${foo[a[b]c]}"
+		},
+		{
+			"id": "fileTests/386/0",
+			"input": "${foo[\"k\"]}"
+		},
+		{
+			"id": "fileTests/387/0",
+			"input": "${foo[$k-1]}"
+		},
+		{
+			"id": "fileTests/388/0",
+			"input": "${foo[${k}-1]}"
+		},
+		{
+			"id": "fileTests/389/0",
+			"input": "${foo[$(cmd)-x]}"
+		},
+		{
+			"id": "fileTests/390/0",
+			"input": "${foo[$bar[1]]}"
+		},
+		{
+			"id": "fileTests/391/0",
+			"input": "((foo[foo-bar]))"
+		},
+		{
+			"id": "fileTests/392/0",
+			"input": "${foo[@]}"
+		},
+		{
+			"id": "fileTests/393/0",
+			"input": "${foo[*]-etc}"
+		},
+		{
+			"id": "fileTests/394/0",
+			"input": "${foo[bar]}"
+		},
+		{
+			"id": "fileTests/395/0",
+			"input": "${foo[$bar]}"
+		},
+		{
+			"id": "fileTests/396/0",
+			"input": "${foo[${bar}]}"
+		},
+		{
+			"id": "fileTests/397/0",
+			"input": "${foo:1}"
+		},
+		{
+			"id": "fileTests/397/1",
+			"input": "${foo: 1 }"
+		},
+		{
+			"id": "fileTests/398/0",
+			"input": "${foo:1:2}"
+		},
+		{
+			"id": "fileTests/398/1",
+			"input": "${foo: 1 : 2 }"
+		},
+		{
+			"id": "fileTests/399/0",
+			"input": "${foo:a:b}"
+		},
+		{
+			"id": "fileTests/400/0",
+			"input": "${foo:1:-2}"
+		},
+		{
+			"id": "fileTests/401/0",
+			"input": "${foo::+3}"
+		},
+		{
+			"id": "fileTests/402/0",
+			"input": "${foo: -1}"
+		},
+		{
+			"id": "fileTests/403/0",
+			"input": "${foo: +2+3}"
+		},
+		{
+			"id": "fileTests/404/0",
+			"input": "${foo:a?1:2:3}"
+		},
+		{
+			"id": "fileTests/405/0",
+			"input": "${foo/a/b}"
+		},
+		{
+			"id": "fileTests/406/0",
+			"input": "${foo/ /\t}"
+		},
+		{
+			"id": "fileTests/407/0",
+			"input": "${foo/[/]-}"
+		},
+		{
+			"id": "fileTests/408/0",
+			"input": "${foo/bar/b/a/r}"
+		},
+		{
+			"id": "fileTests/409/0",
+			"input": "${foo/$a/$'\\''}"
+		},
+		{
+			"id": "fileTests/410/0",
+			"input": "${foo//b1/b2}"
+		},
+		{
+			"id": "fileTests/411/0",
+			"input": "${foo///}"
+		},
+		{
+			"id": "fileTests/411/1",
+			"input": "${foo//}"
+		},
+		{
+			"id": "fileTests/412/0",
+			"input": "${foo/-//}"
+		},
+		{
+			"id": "fileTests/413/0",
+			"input": "${foo//#/}"
+		},
+		{
+			"id": "fileTests/413/1",
+			"input": "${foo//#}"
+		},
+		{
+			"id": "fileTests/414/0",
+			"input": "${foo//[42]/}"
+		},
+		{
+			"id": "fileTests/415/0",
+			"input": "${a^b} ${a^^b} ${a,b} ${a,,b}"
+		},
+		{
+			"id": "fileTests/416/0",
+			"input": "${a@E} ${b@a} ${@@Q} ${!ref@P}"
+		},
+		{
+			"id": "fileTests/417/0",
+			"input": "${a@K} ${b@k}"
+		},
+		{
+			"id": "fileTests/418/0",
+			"input": "${a@Q} ${b@#}"
+		},
+		{
+			"id": "fileTests/419/0",
+			"input": "${#foo}"
+		},
+		{
+			"id": "fileTests/420/0",
+			"input": "${%foo}"
+		},
+		{
+			"id": "fileTests/421/0",
+			"input": "${!foo} ${!bar[@]}"
+		},
+		{
+			"id": "fileTests/422/0",
+			"input": "${!foo*} ${!bar@}"
+		},
+		{
+			"id": "fileTests/423/0",
+			"input": "${#?}"
+		},
+		{
+			"id": "fileTests/424/0",
+			"input": "${#-foo} ${#?bar}"
+		},
+		{
+			"id": "fileTests/425/0",
+			"input": "\"${foo}\""
+		},
+		{
+			"id": "fileTests/426/0",
+			"input": "\"(foo)\""
+		},
+		{
+			"id": "fileTests/427/0",
+			"input": "\"${foo}>\""
+		},
+		{
+			"id": "fileTests/428/0",
+			"input": "\"$(foo)\""
+		},
+		{
+			"id": "fileTests/428/1",
+			"input": "\"`foo`\""
+		},
+		{
+			"id": "fileTests/429/0",
+			"input": "\"$(foo bar)\""
+		},
+		{
+			"id": "fileTests/429/1",
+			"input": "\"$(foo  bar)\""
+		},
+		{
+			"id": "fileTests/429/2",
+			"input": "\"`foo bar`\""
+		},
+		{
+			"id": "fileTests/429/3",
+			"input": "\"`foo  bar`\""
+		},
+		{
+			"id": "fileTests/430/0",
+			"input": "'${foo}'"
+		},
+		{
+			"id": "fileTests/431/0",
+			"input": "$((1))"
+		},
+		{
+			"id": "fileTests/432/0",
+			"input": "$((1 + 3))"
+		},
+		{
+			"id": "fileTests/432/1",
+			"input": "$((1+3))"
+		},
+		{
+			"id": "fileTests/433/0",
+			"input": "\"$((foo))\""
+		},
+		{
+			"id": "fileTests/434/0",
+			"input": "$((a)) b"
+		},
+		{
+			"id": "fileTests/435/0",
+			"input": "$((arr[0]++))"
+		},
+		{
+			"id": "fileTests/436/0",
+			"input": "$((++arr[0]))"
+		},
+		{
+			"id": "fileTests/437/0",
+			"input": "$((${a:-1}))"
+		},
+		{
+			"id": "fileTests/438/0",
+			"input": "$((5 * 2 - 1))"
+		},
+		{
+			"id": "fileTests/438/1",
+			"input": "$((5*2-1))"
+		},
+		{
+			"id": "fileTests/439/0",
+			"input": "$((i | 13))"
+		},
+		{
+			"id": "fileTests/440/0",
+			"input": "$(((a) + ((b))))"
+		},
+		{
+			"id": "fileTests/440/1",
+			"input": "$((\n(a) + \n(\n(b)\n)\n))"
+		},
+		{
+			"id": "fileTests/441/0",
+			"input": "$((3 % 7))"
+		},
+		{
+			"id": "fileTests/441/1",
+			"input": "$((3\n% 7))"
+		},
+		{
+			"id": "fileTests/441/2",
+			"input": "$((3\\\n % 7))"
+		},
+		{
+			"id": "fileTests/441/3",
+			"input": "$((3\\\r\n % 7))"
+		},
+		{
+			"id": "fileTests/442/0",
+			"input": "\"$((1 / 3))\""
+		},
+		{
+			"id": "fileTests/443/0",
+			"input": "$((2 ** 10))"
+		},
+		{
+			"id": "fileTests/444/0",
+			"input": "$(((1) ^ 3))"
+		},
+		{
+			"id": "fileTests/445/0",
+			"input": "$((1 >> (3 << 2)))"
+		},
+		{
+			"id": "fileTests/446/0",
+			"input": "$((-(1)))"
+		},
+		{
+			"id": "fileTests/447/0",
+			"input": "$((i++))"
+		},
+		{
+			"id": "fileTests/448/0",
+			"input": "$((--i))"
+		},
+		{
+			"id": "fileTests/449/0",
+			"input": "$((! i))"
+		},
+		{
+			"id": "fileTests/449/1",
+			"input": "$((!i))"
+		},
+		{
+			"id": "fileTests/450/0",
+			"input": "$((~i))"
+		},
+		{
+			"id": "fileTests/451/0",
+			"input": "$((-! +i))"
+		},
+		{
+			"id": "fileTests/451/1",
+			"input": "$((-!+i))"
+		},
+		{
+			"id": "fileTests/452/0",
+			"input": "$((! ! i))"
+		},
+		{
+			"id": "fileTests/452/1",
+			"input": "$((!!i))"
+		},
+		{
+			"id": "fileTests/453/0",
+			"input": "$((~~i))"
+		},
+		{
+			"id": "fileTests/454/0",
+			"input": "$((1 < 3))"
+		},
+		{
+			"id": "fileTests/455/0",
+			"input": "$((i = 2))"
+		},
+		{
+			"id": "fileTests/455/1",
+			"input": "$((i=2))"
+		},
+		{
+			"id": "fileTests/456/0",
+			"input": "((a[i] = 4))"
+		},
+		{
+			"id": "fileTests/456/1",
+			"input": "((a[i]=4))"
+		},
+		{
+			"id": "fileTests/457/0",
+			"input": "$((a += 2, b -= 3))"
+		},
+		{
+			"id": "fileTests/458/0",
+			"input": "$((a >>= 2, b <<= 3))"
+		},
+		{
+			"id": "fileTests/459/0",
+			"input": "$((a ^^ 2))"
+		},
+		{
+			"id": "fileTests/460/0",
+			"input": "$((a ^^= 2, b **= 3))"
+		},
+		{
+			"id": "fileTests/461/0",
+			"input": "$((a &&= 2, b ||= 3))"
+		},
+		{
+			"id": "fileTests/462/0",
+			"input": "$((a == b && c > d))"
+		},
+		{
+			"id": "fileTests/463/0",
+			"input": "$((a != b))"
+		},
+		{
+			"id": "fileTests/464/0",
+			"input": "$((a &= b))"
+		},
+		{
+			"id": "fileTests/465/0",
+			"input": "$((a |= b))"
+		},
+		{
+			"id": "fileTests/466/0",
+			"input": "$((a %= b))"
+		},
+		{
+			"id": "fileTests/467/0",
+			"input": "$((a /= b))"
+		},
+		{
+			"id": "fileTests/467/1",
+			"input": "$((a/=b))"
+		},
+		{
+			"id": "fileTests/468/0",
+			"input": "$((a ^= b))"
+		},
+		{
+			"id": "fileTests/469/0",
+			"input": "$((i *= 3))"
+		},
+		{
+			"id": "fileTests/470/0",
+			"input": "$((2 >= 10))"
+		},
+		{
+			"id": "fileTests/471/0",
+			"input": "$((foo ? b1 : b2))"
+		},
+		{
+			"id": "fileTests/472/0",
+			"input": "$((a <= (1 || 2)))"
+		},
+		{
+			"id": "fileTests/473/0",
+			"input": "foo$"
+		},
+		{
+			"id": "fileTests/473/1",
+			"input": "foo$\n"
+		},
+		{
+			"id": "fileTests/474/0",
+			"input": "foo$"
+		},
+		{
+			"id": "fileTests/474/1",
+			"input": "foo$\\\n"
+		},
+		{
+			"id": "fileTests/474/2",
+			"input": "foo$\\\r\n"
+		},
+		{
+			"id": "fileTests/475/0",
+			"input": "$''"
+		},
+		{
+			"id": "fileTests/476/0",
+			"input": "$\"\""
+		},
+		{
+			"id": "fileTests/477/0",
+			"input": "$'foo'"
+		},
+		{
+			"id": "fileTests/478/0",
+			"input": "$'f+oo${'"
+		},
+		{
+			"id": "fileTests/479/0",
+			"input": "$'foo bar`'"
+		},
+		{
+			"id": "fileTests/480/0",
+			"input": "$'a ${b} c'"
+		},
+		{
+			"id": "fileTests/481/0",
+			"input": "$\"a ${b} c\""
+		},
+		{
+			"id": "fileTests/482/0",
+			"input": "\"a $b c\""
+		},
+		{
+			"id": "fileTests/483/0",
+			"input": "$\"a $b c\""
+		},
+		{
+			"id": "fileTests/484/0",
+			"input": "$'f\\'oo\n'"
+		},
+		{
+			"id": "fileTests/485/0",
+			"input": "$\"foo\""
+		},
+		{
+			"id": "fileTests/486/0",
+			"input": "$\"foo$\""
+		},
+		{
+			"id": "fileTests/487/0",
+			"input": "$\"foo bar\""
+		},
+		{
+			"id": "fileTests/488/0",
+			"input": "$'f\\'oo'"
+		},
+		{
+			"id": "fileTests/489/0",
+			"input": "$\"f\\\"oo\""
+		},
+		{
+			"id": "fileTests/490/0",
+			"input": "\"foo$\""
+		},
+		{
+			"id": "fileTests/491/0",
+			"input": "\"foo$$\""
+		},
+		{
+			"id": "fileTests/492/0",
+			"input": "\"a $\\\"b\\\" c\""
+		},
+		{
+			"id": "fileTests/493/0",
+			"input": "$(foo$)"
+		},
+		{
+			"id": "fileTests/493/1",
+			"input": "`foo$`"
+		},
+		{
+			"id": "fileTests/494/0",
+			"input": "foo$bar"
+		},
+		{
+			"id": "fileTests/495/0",
+			"input": "foo$(bar)"
+		},
+		{
+			"id": "fileTests/496/0",
+			"input": "foo${bar}"
+		},
+		{
+			"id": "fileTests/497/0",
+			"input": "'foo${bar'"
+		},
+		{
+			"id": "fileTests/498/0",
+			"input": "(foo)\nbar"
+		},
+		{
+			"id": "fileTests/498/1",
+			"input": "(foo); bar"
+		},
+		{
+			"id": "fileTests/499/0",
+			"input": "foo\n(bar)"
+		},
+		{
+			"id": "fileTests/499/1",
+			"input": "foo; (bar)"
+		},
+		{
+			"id": "fileTests/500/0",
+			"input": "foo\n(bar)"
+		},
+		{
+			"id": "fileTests/500/1",
+			"input": "foo; (bar)"
+		},
+		{
+			"id": "fileTests/501/0",
+			"input": "case $i in 1) foo ;; 2 | 3*) bar ;; esac"
+		},
+		{
+			"id": "fileTests/501/1",
+			"input": "case $i in 1) foo;; 2 | 3*) bar; esac"
+		},
+		{
+			"id": "fileTests/501/2",
+			"input": "case $i in (1) foo;; 2 | 3*) bar;; esac"
+		},
+		{
+			"id": "fileTests/501/3",
+			"input": "case $i\nin\n#etc\n1)\nfoo\n;;\n2 | 3*)\nbar\n;;\nesac"
+		},
+		{
+			"id": "fileTests/502/0",
+			"input": "case i in 1) a ;& 2) ;; esac"
+		},
+		{
+			"id": "fileTests/503/0",
+			"input": "case i in 1) a ;; esac"
+		},
+		{
+			"id": "fileTests/503/1",
+			"input": "case i { 1) a ;; }"
+		},
+		{
+			"id": "fileTests/503/2",
+			"input": "case i {\n1) a ;;\n}"
+		},
+		{
+			"id": "fileTests/504/0",
+			"input": "case i in 1) a ;;& 2) b ;; esac"
+		},
+		{
+			"id": "fileTests/505/0",
+			"input": "case i in 1) a ;| 2) b ;; esac"
+		},
+		{
+			"id": "fileTests/506/0",
+			"input": "case $i in 1) cat <<EOF ;;\nfoo\nEOF\nesac"
+		},
+		{
+			"id": "fileTests/507/0",
+			"input": "foo | while read a; do b; done"
+		},
+		{
+			"id": "fileTests/508/0",
+			"input": "while read l; do foo || bar; done"
+		},
+		{
+			"id": "fileTests/509/0",
+			"input": "echo if while"
+		},
+		{
+			"id": "fileTests/510/0",
+			"input": "${foo}if"
+		},
+		{
+			"id": "fileTests/511/0",
+			"input": "$if'|'"
+		},
+		{
+			"id": "fileTests/512/0",
+			"input": "if a; then b=; fi"
+		},
+		{
+			"id": "fileTests/512/1",
+			"input": "if a; then b=\nfi"
+		},
+		{
+			"id": "fileTests/513/0",
+			"input": "if a; then >f; fi"
+		},
+		{
+			"id": "fileTests/513/1",
+			"input": "if a; then >f\nfi"
+		},
+		{
+			"id": "fileTests/514/0",
+			"input": "if a; then (a); fi"
+		},
+		{
+			"id": "fileTests/514/1",
+			"input": "if a; then (a) fi"
+		},
+		{
+			"id": "fileTests/515/0",
+			"input": "a=b\nc=d"
+		},
+		{
+			"id": "fileTests/515/1",
+			"input": "a=b; c=d"
+		},
+		{
+			"id": "fileTests/516/0",
+			"input": "foo && write | read"
+		},
+		{
+			"id": "fileTests/517/0",
+			"input": "write | read && bar"
+		},
+		{
+			"id": "fileTests/518/0",
+			"input": "foo >f | bar"
+		},
+		{
+			"id": "fileTests/519/0",
+			"input": "(foo) >f | bar"
+		},
+		{
+			"id": "fileTests/520/0",
+			"input": "foo | >f"
+		},
+		{
+			"id": "fileTests/521/0",
+			"input": "[[ a ]]"
+		},
+		{
+			"id": "fileTests/522/0",
+			"input": "foo | [[ a ]]"
+		},
+		{
+			"id": "fileTests/523/0",
+			"input": "echo [[ a ]]"
+		},
+		{
+			"id": "fileTests/524/0",
+			"input": "]] a"
+		},
+		{
+			"id": "fileTests/525/0",
+			"input": "x=1 [[ a ]]"
+		},
+		{
+			"id": "fileTests/526/0",
+			"input": ">f [[ a ]]\n>f ]] a\n>f select x\n>f function foo"
+		},
+		{
+			"id": "fileTests/527/0",
+			"input": ">f }\n>f then\n>f elif\n>f else\n>f fi\n>f do\n>f done\n>f esac\n>f !"
+		},
+		{
+			"id": "fileTests/528/0",
+			"input": "[[ a ]]\nb"
+		},
+		{
+			"id": "fileTests/529/0",
+			"input": "[[ a > b ]]"
+		},
+		{
+			"id": "fileTests/530/0",
+			"input": "[[ 1 -nt 2 ]]"
+		},
+		{
+			"id": "fileTests/531/0",
+			"input": "[[ 1 -eq 2 ]]"
+		},
+		{
+			"id": "fileTests/532/0",
+			"input": "[[ -1 -eq -1 ]]"
+		},
+		{
+			"id": "fileTests/533/0",
+			"input": "[[ +3 -eq 1+2 ]]"
+		},
+		{
+			"id": "fileTests/534/0",
+			"input": "[[ -R a ]]"
+		},
+		{
+			"id": "fileTests/534/1",
+			"input": "[[\n-R a\n]]"
+		},
+		{
+			"id": "fileTests/535/0",
+			"input": "[[ -n $foo#bar ]]"
+		},
+		{
+			"id": "fileTests/536/0",
+			"input": "[[ a =~ b ]]"
+		},
+		{
+			"id": "fileTests/536/1",
+			"input": "[[ a =~ b ]];"
+		},
+		{
+			"id": "fileTests/537/0",
+			"input": "[[ a =~ \" foo \"$bar ]]"
+		},
+		{
+			"id": "fileTests/538/0",
+			"input": "[[ a =~ foo\"bar\" ]]"
+		},
+		{
+			"id": "fileTests/539/0",
+			"input": "[[ a =~ [ab](c |d) ]]"
+		},
+		{
+			"id": "fileTests/540/0",
+			"input": "[[ a =~ ( ]]<>;&) ]]"
+		},
+		{
+			"id": "fileTests/541/0",
+			"input": "[[ a =~ ($foo) ]]"
+		},
+		{
+			"id": "fileTests/542/0",
+			"input": "[[ a =~ b\\ c|d ]]"
+		},
+		{
+			"id": "fileTests/543/0",
+			"input": "[[ a == -n ]]"
+		},
+		{
+			"id": "fileTests/544/0",
+			"input": "[[ a == (b|c)* ]]"
+		},
+		{
+			"id": "fileTests/545/0",
+			"input": "[[ a == (#i)bar ]]"
+		},
+		{
+			"id": "fileTests/546/0",
+			"input": "echo (foo|bar).baz"
+		},
+		{
+			"id": "fileTests/547/0",
+			"input": "ls (#i)*.mod"
+		},
+		{
+			"id": "fileTests/548/0",
+			"input": "[[ a =~ -n ]]"
+		},
+		{
+			"id": "fileTests/549/0",
+			"input": "[[ a =~ b$ || c =~ d$ ]]"
+		},
+		{
+			"id": "fileTests/550/0",
+			"input": "[[ -n $a ]]"
+		},
+		{
+			"id": "fileTests/551/0",
+			"input": "[[ ! $a < 'b' ]]"
+		},
+		{
+			"id": "fileTests/552/0",
+			"input": "[[ ! -e $a ]]"
+		},
+		{
+			"id": "fileTests/552/1",
+			"input": "[[ ! -a $a ]]"
+		},
+		{
+			"id": "fileTests/552/2",
+			"input": "[[\n!\n-a $a\n]]"
+		},
+		{
+			"id": "fileTests/553/0",
+			"input": "[[ a && b ]]"
+		},
+		{
+			"id": "fileTests/553/1",
+			"input": "[[\na &&\nb ]]"
+		},
+		{
+			"id": "fileTests/553/2",
+			"input": "[[\n\na &&\n\nb ]]"
+		},
+		{
+			"id": "fileTests/554/0",
+			"input": "[[ (a && b) ]]"
+		},
+		{
+			"id": "fileTests/555/0",
+			"input": "[[ a && (b) ]]"
+		},
+		{
+			"id": "fileTests/555/1",
+			"input": "[[ a &&\n(\nb) ]]"
+		},
+		{
+			"id": "fileTests/556/0",
+			"input": "[[ (a && b) || -f c ]]"
+		},
+		{
+			"id": "fileTests/557/0",
+			"input": "[[ -S a && -L b ]]"
+		},
+		{
+			"id": "fileTests/557/1",
+			"input": "[[ -S a && -h b ]]"
+		},
+		{
+			"id": "fileTests/558/0",
+			"input": "[[ -k a && -N b ]]"
+		},
+		{
+			"id": "fileTests/559/0",
+			"input": "[[ -G a && -O b ]]"
+		},
+		{
+			"id": "fileTests/560/0",
+			"input": "[[ -d a && -c b ]]"
+		},
+		{
+			"id": "fileTests/561/0",
+			"input": "[[ -b a && -p b ]]"
+		},
+		{
+			"id": "fileTests/562/0",
+			"input": "[[ -g a && -u b ]]"
+		},
+		{
+			"id": "fileTests/563/0",
+			"input": "[[ -r a && -w b ]]"
+		},
+		{
+			"id": "fileTests/564/0",
+			"input": "[[ -x a && -s b ]]"
+		},
+		{
+			"id": "fileTests/565/0",
+			"input": "[[ -t a && -z b ]]"
+		},
+		{
+			"id": "fileTests/566/0",
+			"input": "[[ -o a && -v b ]]"
+		},
+		{
+			"id": "fileTests/567/0",
+			"input": "[[ a -ot b && c -ef d ]]"
+		},
+		{
+			"id": "fileTests/568/0",
+			"input": "[[ a = b && c != d ]]"
+		},
+		{
+			"id": "fileTests/569/0",
+			"input": "[[ a -ne b && c -le d ]]"
+		},
+		{
+			"id": "fileTests/570/0",
+			"input": "[[ c -ge d ]]"
+		},
+		{
+			"id": "fileTests/571/0",
+			"input": "[[ a -lt b && c -gt d ]]"
+		},
+		{
+			"id": "fileTests/572/0",
+			"input": "[[ 1.2 -gt 0.3 ]]"
+		},
+		{
+			"id": "fileTests/573/0",
+			"input": "declare -f func"
+		},
+		{
+			"id": "fileTests/574/0",
+			"input": "(local bar)"
+		},
+		{
+			"id": "fileTests/575/0",
+			"input": "local {a,b}_c=1"
+		},
+		{
+			"id": "fileTests/576/0",
+			"input": "typeset"
+		},
+		{
+			"id": "fileTests/577/0",
+			"input": "export bar"
+		},
+		{
+			"id": "fileTests/578/0",
+			"input": "readonly -n"
+		},
+		{
+			"id": "fileTests/579/0",
+			"input": "nameref bar="
+		},
+		{
+			"id": "fileTests/580/0",
+			"input": "declare -a +n -b$o foo=bar"
+		},
+		{
+			"id": "fileTests/581/0",
+			"input": "declare -a foo=(b1 $(b2))"
+		},
+		{
+			"id": "fileTests/581/1",
+			"input": "declare -a foo=(b1 `b2`)"
+		},
+		{
+			"id": "fileTests/582/0",
+			"input": "local -a foo=(b1)"
+		},
+		{
+			"id": "fileTests/583/0",
+			"input": "a=b local c"
+		},
+		{
+			"id": "fileTests/584/0",
+			"input": "IFS=: local x=($(echo a:b))"
+		},
+		{
+			"id": "fileTests/585/0",
+			"input": "declare -A foo=([a]=b)"
+		},
+		{
+			"id": "fileTests/586/0",
+			"input": "declare foo[a]="
+		},
+		{
+			"id": "fileTests/587/0",
+			"input": "declare foo[*]"
+		},
+		{
+			"id": "fileTests/588/0",
+			"input": "declare foo[\"x y\"]"
+		},
+		{
+			"id": "fileTests/589/0",
+			"input": "declare foo['x y']"
+		},
+		{
+			"id": "fileTests/590/0",
+			"input": "foo=([)"
+		},
+		{
+			"id": "fileTests/591/0",
+			"input": "a && b=(c)\nd"
+		},
+		{
+			"id": "fileTests/591/1",
+			"input": "a && b=(c); d"
+		},
+		{
+			"id": "fileTests/592/0",
+			"input": "declare -f $func >/dev/null"
+		},
+		{
+			"id": "fileTests/593/0",
+			"input": "declare a\n{ x; }"
+		},
+		{
+			"id": "fileTests/594/0",
+			"input": "eval a=b foo"
+		},
+		{
+			"id": "fileTests/595/0",
+			"input": "time"
+		},
+		{
+			"id": "fileTests/595/1",
+			"input": "time\n"
+		},
+		{
+			"id": "fileTests/596/0",
+			"input": "time -p"
+		},
+		{
+			"id": "fileTests/597/0",
+			"input": "time -a"
+		},
+		{
+			"id": "fileTests/598/0",
+			"input": "time --"
+		},
+		{
+			"id": "fileTests/599/0",
+			"input": "time foo"
+		},
+		{
+			"id": "fileTests/600/0",
+			"input": "time { foo; }"
+		},
+		{
+			"id": "fileTests/601/0",
+			"input": "time\nfoo"
+		},
+		{
+			"id": "fileTests/602/0",
+			"input": "coproc foo bar"
+		},
+		{
+			"id": "fileTests/603/0",
+			"input": "coproc name { foo; }"
+		},
+		{
+			"id": "fileTests/604/0",
+			"input": "coproc $namevar { foo; }"
+		},
+		{
+			"id": "fileTests/605/0",
+			"input": "coproc foo"
+		},
+		{
+			"id": "fileTests/605/1",
+			"input": "coproc foo;"
+		},
+		{
+			"id": "fileTests/606/0",
+			"input": "coproc { foo; }"
+		},
+		{
+			"id": "fileTests/607/0",
+			"input": "coproc (foo)"
+		},
+		{
+			"id": "fileTests/608/0",
+			"input": "coproc name foo | bar"
+		},
+		{
+			"id": "fileTests/609/0",
+			"input": "coproc $()"
+		},
+		{
+			"id": "fileTests/609/1",
+			"input": "coproc ``"
+		},
+		{
+			"id": "fileTests/610/0",
+			"input": "let i++"
+		},
+		{
+			"id": "fileTests/611/0",
+			"input": "let a++ b++ c +d"
+		},
+		{
+			"id": "fileTests/612/0",
+			"input": "let ++i >/dev/null"
+		},
+		{
+			"id": "fileTests/613/0",
+			"input": "let a=(1 + 2) b=3+4"
+		},
+		{
+			"id": "fileTests/613/1",
+			"input": "let a=(1+2) b=3+4"
+		},
+		{
+			"id": "fileTests/614/0",
+			"input": "let a=$(echo 3)"
+		},
+		{
+			"id": "fileTests/614/1",
+			"input": "let a=`echo 3`"
+		},
+		{
+			"id": "fileTests/615/0",
+			"input": "(foo-bar)"
+		},
+		{
+			"id": "fileTests/616/0",
+			"input": "let i++\nbar"
+		},
+		{
+			"id": "fileTests/616/1",
+			"input": "let i++ \nbar"
+		},
+		{
+			"id": "fileTests/616/2",
+			"input": "let i++; bar"
+		},
+		{
+			"id": "fileTests/617/0",
+			"input": "let i++\nfoo=(bar)"
+		},
+		{
+			"id": "fileTests/617/1",
+			"input": "let i++; foo=(bar)"
+		},
+		{
+			"id": "fileTests/617/2",
+			"input": "let i++; foo=(bar)\n"
+		},
+		{
+			"id": "fileTests/618/0",
+			"input": "case a in b) let i++ ;; esac"
+		},
+		{
+			"id": "fileTests/618/1",
+			"input": "case a in b) let i++;; esac"
+		},
+		{
+			"id": "fileTests/619/0",
+			"input": "a+=1"
+		},
+		{
+			"id": "fileTests/620/0",
+			"input": "b+=(2 3)"
+		},
+		{
+			"id": "fileTests/621/0",
+			"input": "a[1]=(b c)"
+		},
+		{
+			"id": "fileTests/622/0",
+			"input": "a[2]=b c[3]= d[x]+=e"
+		},
+		{
+			"id": "fileTests/623/0",
+			"input": "a[foo-bar]=b"
+		},
+		{
+			"id": "fileTests/624/0",
+			"input": "typeset -A a=([foo-bar]=b)"
+		},
+		{
+			"id": "fileTests/625/0",
+			"input": "*[i]=x"
+		},
+		{
+			"id": "fileTests/626/0",
+			"input": "arr[0,1]=x"
+		},
+		{
+			"id": "fileTests/627/0",
+			"input": "b[i]+=2"
+		},
+		{
+			"id": "fileTests/628/0",
+			"input": "b[ i ]+=2"
+		},
+		{
+			"id": "fileTests/629/0",
+			"input": "$((a + \"b + $c\"))"
+		},
+		{
+			"id": "fileTests/630/0",
+			"input": "let 'i++'"
+		},
+		{
+			"id": "fileTests/631/0",
+			"input": "echo ${a[\"x y\"]}"
+		},
+		{
+			"id": "fileTests/632/0",
+			"input": "a[$\"x y\"]=b"
+		},
+		{
+			"id": "fileTests/632/1",
+			"input": "a[ $\"x y\" ]=b"
+		},
+		{
+			"id": "fileTests/633/0",
+			"input": "((a[\"x y\"] = b))"
+		},
+		{
+			"id": "fileTests/633/1",
+			"input": "((a[\"x y\"]=b))"
+		},
+		{
+			"id": "fileTests/634/0",
+			"input": "a=([\"x y\"]=b)"
+		},
+		{
+			"id": "fileTests/634/1",
+			"input": "a=( [ \"x y\" ]=b)"
+		},
+		{
+			"id": "fileTests/635/0",
+			"input": "a=([x]= [y]=)"
+		},
+		{
+			"id": "fileTests/635/1",
+			"input": "a=(\n[x]=\n[y]=\n)"
+		},
+		{
+			"id": "fileTests/636/0",
+			"input": "a=(foo[0-9])"
+		},
+		{
+			"id": "fileTests/637/0",
+			"input": "a=(\"foo\"[0-9])"
+		},
+		{
+			"id": "fileTests/638/0",
+			"input": "a]b"
+		},
+		{
+			"id": "fileTests/639/0",
+			"input": "echo a[b c[de]f"
+		},
+		{
+			"id": "fileTests/640/0",
+			"input": "<<EOF | b\nfoo\nEOF"
+		},
+		{
+			"id": "fileTests/641/0",
+			"input": "<<EOF1 <<EOF2 | c && d\nEOF1\nEOF2"
+		},
+		{
+			"id": "fileTests/642/0",
+			"input": "<<EOF && { bar; }\nhdoc\nEOF"
+		},
+		{
+			"id": "fileTests/642/1",
+			"input": "<<EOF &&\nhdoc\nEOF\n{ bar; }"
+		},
+		{
+			"id": "fileTests/643/0",
+			"input": "foo() {\n\t<<EOF && { bar; }\nhdoc\nEOF\n}"
+		},
+		{
+			"id": "fileTests/644/0",
+			"input": "\"a$(\"\")\""
+		},
+		{
+			"id": "fileTests/644/1",
+			"input": "\"a`\"\"`\""
+		},
+		{
+			"id": "fileTests/645/0",
+			"input": "echo ?(b)*(c)+(d)@(e)!(f)"
+		},
+		{
+			"id": "fileTests/646/0",
+			"input": "echo foo@(b*(c|d))bar"
+		},
+		{
+			"id": "fileTests/647/0",
+			"input": "echo $a@(b)$c?(d)$e*(f)$g+(h)$i!(j)$k"
+		},
+		{
+			"id": "fileTests/648/0",
+			"input": "\"^$1[[:space:]]\""
+		},
+		{
+			"id": "fileTests/649/0",
+			"input": "echo *(.)"
+		},
+		{
+			"id": "fileTests/650/0",
+			"input": "echo **(/)"
+		},
+		{
+			"id": "fileTests/651/0",
+			"input": "echo *.txt(@)"
+		},
+		{
+			"id": "fileTests/652/0",
+			"input": "echo *(om[1,5])"
+		},
+		{
+			"id": "fileTests/653/0",
+			"input": "echo /bin/sh(:t)"
+		},
+		{
+			"id": "fileTests/654/0",
+			"input": "echo .(:a)"
+		},
+		{
+			"id": "fileTests/655/0",
+			"input": "echo ~(:t)"
+		},
+		{
+			"id": "fileTests/656/0",
+			"input": "echo {go.mod,shfmt}(N*)"
+		},
+		{
+			"id": "fileTests/657/0",
+			"input": "echo $var(Nms-3)"
+		},
+		{
+			"id": "fileTests/658/0",
+			"input": "echo a(A) b(B)"
+		},
+		{
+			"id": "fileTests/659/0",
+			"input": "echo <->"
+		},
+		{
+			"id": "fileTests/660/0",
+			"input": "echo <5-10>"
+		},
+		{
+			"id": "fileTests/661/0",
+			"input": "echo foo<->.txt"
+		},
+		{
+			"id": "fileTests/662/0",
+			"input": "echo <5->.*"
+		},
+		{
+			"id": "fileTests/663/0",
+			"input": "echo <2-3"
+		},
+		{
+			"id": "fileTests/664/0",
+			"input": "@test \"desc\" { body; }"
+		},
+		{
+			"id": "fileTests/665/0",
+			"input": "@test 'desc' {\n\tmultiple\n\tstatements\n}"
+		},
+		{
+			"id": "fileTests/666/0",
+			"input": "${+foo}"
+		},
+		{
+			"id": "fileTests/667/0",
+			"input": "$+foo $#bar"
+		},
+		{
+			"id": "fileTests/668/0",
+			"input": "${${foo#head}%tail}"
+		},
+		{
+			"id": "fileTests/669/0",
+			"input": "${#\"${foo}\"}"
+		},
+		{
+			"id": "fileTests/670/0",
+			"input": "${$(echo footail)%tail}"
+		},
+		{
+			"id": "fileTests/671/0",
+			"input": "${foo:u}"
+		},
+		{
+			"id": "fileTests/672/0",
+			"input": "${foo:t5:h2:l}"
+		},
+		{
+			"id": "fileTests/673/0",
+			"input": "$${foo}"
+		},
+		{
+			"id": "fileTests/674/0",
+			"input": "${=foo}"
+		},
+		{
+			"id": "fileTests/675/0",
+			"input": "${~foo}"
+		},
+		{
+			"id": "fileTests/676/0",
+			"input": "${^foo}"
+		},
+		{
+			"id": "fileTests/677/0",
+			"input": "${==foo}"
+		},
+		{
+			"id": "fileTests/678/0",
+			"input": "${~~foo}"
+		},
+		{
+			"id": "fileTests/679/0",
+			"input": "${^^foo}"
+		},
+		{
+			"id": "fileTests/680/0",
+			"input": "$=foo $^bar $~baz"
+		},
+		{
+			"id": "fileTests/681/0",
+			"input": "${(o)=items}"
+		},
+		{
+			"id": "fileTests/682/0",
+			"input": "${(aO)foo} ${(s/x/)foo}"
+		},
+		{
+			"id": "fileTests/683/0",
+			"input": "${:-word}"
+		},
+		{
+			"id": "fileTests/684/0",
+			"input": "${:+word}"
+		},
+		{
+			"id": "fileTests/685/0",
+			"input": "${(%):-%N}"
+		},
+		{
+			"id": "fileTestsNoPrint/0/0",
+			"input": "$[foo]"
+		},
+		{
+			"id": "fileTestsNoPrint/1/0",
+			"input": "\"$[foo]\""
+		},
+		{
+			"id": "fileTestsNoPrint/2/0",
+			"input": "\"$[1 + 3]\""
+		},
+		{
+			"id": "fileTestsKeepComments/0/0",
+			"input": "# foo\ncmd\n# bar"
+		},
+		{
+			"id": "fileTestsKeepComments/1/0",
+			"input": "foo # bar"
+		},
+		{
+			"id": "fileTestsKeepComments/1/1",
+			"input": "foo \\\n# bar"
+		},
+		{
+			"id": "fileTestsKeepComments/1/2",
+			"input": "foo \\\n\t# bar\n"
+		},
+		{
+			"id": "fileTestsKeepComments/1/3",
+			"input": "foo \\\n\\\n# bar"
+		},
+		{
+			"id": "fileTestsKeepComments/2/0",
+			"input": "foo #\\\nbar"
+		},
+		{
+			"id": "fileTestsKeepComments/3/0",
+			"input": "foo bar <<EOF # c\nbody\nEOF"
+		},
+		{
+			"id": "fileTestsKeepComments/3/1",
+			"input": "foo <<EOF bar # c\nbody\nEOF"
+		},
+		{
+			"id": "fileTestsKeepComments/3/2",
+			"input": "foo <<EOF \\\n\tbar \\\n\t# c\nbody\nEOF"
+		},
+		{
+			"id": "fileTestsKeepComments/4/0",
+			"input": "foo &&\n\t# bar\n\tbaz"
+		},
+		{
+			"id": "fileTestsKeepComments/4/1",
+			"input": "foo &&\n# bar\nbaz"
+		},
+		{
+			"id": "fileTestsKeepComments/5/0",
+			"input": "foo # bar # baz"
+		},
+		{
+			"id": "fileTestsKeepComments/6/0",
+			"input": "{ foo; } always { # c\n}"
+		},
+		{
+			"id": "fileTestsKeepComments/6/1",
+			"input": "{ foo; } always # c\n{}"
+		},
+		{
+			"id": "fileTestsKeepComments/6/2",
+			"input": "{ foo; } always # c\n{ }"
+		},
+		{
+			"id": "fileTestsKeepComments/7/0",
+			"input": "{ foo; } always { # c\n\tbar\n}"
+		},
+		{
+			"id": "fileTestsKeepComments/7/1",
+			"input": "{ foo; } always # c\n{ bar; }"
+		},
+		{
+			"id": "fileTestsKeepComments/8/0",
+			"input": "$(\n\t# foo\n)"
+		},
+		{
+			"id": "fileTestsKeepComments/8/1",
+			"input": "`\n\t# foo\n`"
+		},
+		{
+			"id": "fileTestsKeepComments/8/2",
+			"input": "`# foo\n`"
+		},
+		{
+			"id": "fileTestsKeepComments/9/0",
+			"input": "`# foo`"
+		},
+		{
+			"id": "fileTestsKeepComments/9/1",
+			"input": "` # foo`"
+		},
+		{
+			"id": "fileTestsKeepComments/10/0",
+			"input": "if foo; then\n\t# bar\nfi"
+		},
+		{
+			"id": "fileTestsKeepComments/11/0",
+			"input": "if foo; then\n\tbar\nelif baz; then\n\t# c\nelse\n\t# d\nfi"
+		},
+		{
+			"id": "fileTestsKeepComments/12/0",
+			"input": "while foo; do\n\t# bar\ndone"
+		},
+		{
+			"id": "fileTestsKeepComments/13/0",
+			"input": "for i; do\n\t# bar\ndone"
+		},
+		{
+			"id": "fileTestsKeepComments/14/0",
+			"input": "{\n\t# foo\n}"
+		},
+		{
+			"id": "fileTestsKeepComments/15/0",
+			"input": "(\n\t# foo\n)"
+		},
+		{
+			"id": "errorCases/0",
+			"input": "",
+			"bytes": "ZWNobyCA"
+		},
+		{
+			"id": "errorCases/1",
+			"input": "",
+			"bytes": "CmVjaG8ggA=="
+		},
+		{
+			"id": "errorCases/2",
+			"input": "",
+			"bytes": "ZWNobyBmb2+AYmFy"
+		},
+		{
+			"id": "errorCases/3",
+			"input": "",
+			"bytes": "ZWNobyBmb2/D"
+		},
+		{
+			"id": "errorCases/4",
+			"input": "",
+			"bytes": "I2Zvb8M="
+		},
+		{
+			"id": "errorCases/5",
+			"input": "",
+			"bytes": "ZWNobyBhgA=="
+		},
+		{
+			"id": "errorCases/6",
+			"input": "",
+			"bytes": "PDwkyAokyA=="
+		},
+		{
+			"id": "errorCases/7",
+			"input": "",
+			"bytes": "ZWNobyAkKChmb2+AYmFy"
+		},
+		{
+			"id": "errorCases/8",
+			"input": "",
+			"bytes": "ej0oJFwKI1wKXAokI5FcCg=="
+		},
+		{
+			"id": "errorCases/9",
+			"input": "${ "
+		},
+		{
+			"id": "errorCases/10",
+			"input": "${ foo;"
+		},
+		{
+			"id": "errorCases/11",
+			"input": "${ foo }"
+		},
+		{
+			"id": "errorCases/12",
+			"input": "${|"
+		},
+		{
+			"id": "errorCases/13",
+			"input": "${|foo;"
+		},
+		{
+			"id": "errorCases/14",
+			"input": "${|foo }"
+		},
+		{
+			"id": "errorCases/15",
+			"input": "${ { foo; }bar; }"
+		},
+		{
+			"id": "errorCases/16",
+			"input": "",
+			"bytes": "KChmb2+AYmFy"
+		},
+		{
+			"id": "errorCases/17",
+			"input": "",
+			"bytes": "O4A="
+		},
+		{
+			"id": "errorCases/18",
+			"input": "",
+			"bytes": "JHthgA=="
+		},
+		{
+			"id": "errorCases/19",
+			"input": "",
+			"bytes": "JHthI4A="
+		},
+		{
+			"id": "errorCases/20",
+			"input": "",
+			"bytes": "JHthLSeA"
+		},
+		{
+			"id": "errorCases/21",
+			"input": "",
+			"bytes": "ZWNobyAkKChhIHyA"
+		},
+		{
+			"id": "errorCases/22",
+			"input": "!"
+		},
+		{
+			"id": "errorCases/23",
+			"input": "! !"
+		},
+		{
+			"id": "errorCases/24",
+			"input": "! ! foo"
+		},
+		{
+			"id": "errorCases/25",
+			"input": "}"
+		},
+		{
+			"id": "errorCases/26",
+			"input": "foo | }"
+		},
+		{
+			"id": "errorCases/27",
+			"input": "foo }"
+		},
+		{
+			"id": "errorCases/28",
+			"input": "{ foo; } always"
+		},
+		{
+			"id": "errorCases/29",
+			"input": "{ foo; } always foo"
+		},
+		{
+			"id": "errorCases/30",
+			"input": "{ foo; } >a always { bar; }"
+		},
+		{
+			"id": "errorCases/31",
+			"input": "{ foo; }\nalways { bar; }"
+		},
+		{
+			"id": "errorCases/32",
+			"input": "f() { foo; } always { bar; }"
+		},
+		{
+			"id": "errorCases/33",
+			"input": "then"
+		},
+		{
+			"id": "errorCases/34",
+			"input": "elif"
+		},
+		{
+			"id": "errorCases/35",
+			"input": "fi"
+		},
+		{
+			"id": "errorCases/36",
+			"input": "do"
+		},
+		{
+			"id": "errorCases/37",
+			"input": "done"
+		},
+		{
+			"id": "errorCases/38",
+			"input": "esac"
+		},
+		{
+			"id": "errorCases/39",
+			"input": "a=b { foo; }"
+		},
+		{
+			"id": "errorCases/40",
+			"input": "a=b foo() { bar; }"
+		},
+		{
+			"id": "errorCases/41",
+			"input": "a=b if foo; then bar; fi"
+		},
+		{
+			"id": "errorCases/42",
+			"input": ">f { foo; }"
+		},
+		{
+			"id": "errorCases/43",
+			"input": ">f foo() { bar; }"
+		},
+		{
+			"id": "errorCases/44",
+			"input": ">f if foo; then bar; fi"
+		},
+		{
+			"id": "errorCases/45",
+			"input": "if done; then b; fi"
+		},
+		{
+			"id": "errorCases/46",
+			"input": "'"
+		},
+		{
+			"id": "errorCases/47",
+			"input": "\""
+		},
+		{
+			"id": "errorCases/48",
+			"input": "'\\''"
+		},
+		{
+			"id": "errorCases/49",
+			"input": ";"
+		},
+		{
+			"id": "errorCases/50",
+			"input": "{ ; }"
+		},
+		{
+			"id": "errorCases/51",
+			"input": "\"foo\"(){ :; }"
+		},
+		{
+			"id": "errorCases/52",
+			"input": "foo$bar(){ :; }"
+		},
+		{
+			"id": "errorCases/53",
+			"input": "{"
+		},
+		{
+			"id": "errorCases/54",
+			"input": "{ foo;"
+		},
+		{
+			"id": "errorCases/55",
+			"input": "{ foo; #}"
+		},
+		{
+			"id": "errorCases/56",
+			"input": "(x"
+		},
+		{
+			"id": "errorCases/57",
+			"input": ")"
+		},
+		{
+			"id": "errorCases/58",
+			"input": "`"
+		},
+		{
+			"id": "errorCases/59",
+			"input": ";;"
+		},
+		{
+			"id": "errorCases/60",
+			"input": "( foo;"
+		},
+		{
+			"id": "errorCases/61",
+			"input": "&"
+		},
+		{
+			"id": "errorCases/62",
+			"input": "|"
+		},
+		{
+			"id": "errorCases/63",
+			"input": "&&"
+		},
+		{
+			"id": "errorCases/64",
+			"input": "||"
+		},
+		{
+			"id": "errorCases/65",
+			"input": "foo; || bar"
+		},
+		{
+			"id": "errorCases/66",
+			"input": "echo & || bar"
+		},
+		{
+			"id": "errorCases/67",
+			"input": "echo & ; bar"
+		},
+		{
+			"id": "errorCases/68",
+			"input": "foo;;"
+		},
+		{
+			"id": "errorCases/69",
+			"input": "foo("
+		},
+		{
+			"id": "errorCases/70",
+			"input": "foo(bar"
+		},
+		{
+			"id": "errorCases/71",
+			"input": "à("
+		},
+		{
+			"id": "errorCases/72",
+			"input": "foo'"
+		},
+		{
+			"id": "errorCases/73",
+			"input": "foo\""
+		},
+		{
+			"id": "errorCases/74",
+			"input": "\"foo"
+		},
+		{
+			"id": "errorCases/75",
+			"input": "\"foobar\\"
+		},
+		{
+			"id": "errorCases/76",
+			"input": "\"foo\\a"
+		},
+		{
+			"id": "errorCases/77",
+			"input": "foo()"
+		},
+		{
+			"id": "errorCases/78",
+			"input": "foo() {"
+		},
+		{
+			"id": "errorCases/79",
+			"input": "foo() { bar;"
+		},
+		{
+			"id": "errorCases/80",
+			"input": "foo-bar() { x; }"
+		},
+		{
+			"id": "errorCases/81",
+			"input": "foò() { x; }"
+		},
+		{
+			"id": "errorCases/82",
+			"input": "echo foo("
+		},
+		{
+			"id": "errorCases/83",
+			"input": "echo &&"
+		},
+		{
+			"id": "errorCases/84",
+			"input": "echo |"
+		},
+		{
+			"id": "errorCases/85",
+			"input": "echo ||"
+		},
+		{
+			"id": "errorCases/86",
+			"input": "echo | #bar"
+		},
+		{
+			"id": "errorCases/87",
+			"input": "echo && #bar"
+		},
+		{
+			"id": "errorCases/88",
+			"input": "`echo &&`"
+		},
+		{
+			"id": "errorCases/89",
+			"input": "`echo |`"
+		},
+		{
+			"id": "errorCases/90",
+			"input": "echo | ! true"
+		},
+		{
+			"id": "errorCases/91",
+			"input": "echo >"
+		},
+		{
+			"id": "errorCases/92",
+			"input": "echo >>"
+		},
+		{
+			"id": "errorCases/93",
+			"input": "echo <"
+		},
+		{
+			"id": "errorCases/94",
+			"input": "echo 2>"
+		},
+		{
+			"id": "errorCases/95",
+			"input": "echo <\nbar"
+		},
+		{
+			"id": "errorCases/96",
+			"input": "echo | < #bar"
+		},
+		{
+			"id": "errorCases/97",
+			"input": "echo && > #"
+		},
+		{
+			"id": "errorCases/98",
+			"input": "<<"
+		},
+		{
+			"id": "errorCases/99",
+			"input": "`<<`"
+		},
+		{
+			"id": "errorCases/100",
+			"input": "echo `cat <<"
+		},
+		{
+			"id": "errorCases/101",
+			"input": "<<EOF"
+		},
+		{
+			"id": "errorCases/102",
+			"input": "<<EOF\n\\"
+		},
+		{
+			"id": "errorCases/103",
+			"input": "<<EOF\n\\\n"
+		},
+		{
+			"id": "errorCases/104",
+			"input": "<<EOF\n\\\nEOF"
+		},
+		{
+			"id": "errorCases/105",
+			"input": "<<EOF\nfoo\\\nEOF"
+		},
+		{
+			"id": "errorCases/106",
+			"input": "<<'EOF'\n\\\n"
+		},
+		{
+			"id": "errorCases/107",
+			"input": "<<EOF <`\n#\n`\n``"
+		},
+		{
+			"id": "errorCases/108",
+			"input": "<<'EOF'"
+		},
+		{
+			"id": "errorCases/109",
+			"input": "<<\\EOF"
+		},
+		{
+			"id": "errorCases/110",
+			"input": "<<\\\\EOF"
+		},
+		{
+			"id": "errorCases/111",
+			"input": "<<-EOF"
+		},
+		{
+			"id": "errorCases/112",
+			"input": "<<-EOF\n\t"
+		},
+		{
+			"id": "errorCases/113",
+			"input": "<<-'EOF'\n\t"
+		},
+		{
+			"id": "errorCases/114",
+			"input": "<<\nEOF\nbar\nEOF"
+		},
+		{
+			"id": "errorCases/115",
+			"input": "$(<<EOF\nNOTEOF)"
+		},
+		{
+			"id": "errorCases/116",
+			"input": "`<<EOF\nNOTEOF`"
+		},
+		{
+			"id": "errorCases/117",
+			"input": "if"
+		},
+		{
+			"id": "errorCases/118",
+			"input": "if true;"
+		},
+		{
+			"id": "errorCases/119",
+			"input": "if true then"
+		},
+		{
+			"id": "errorCases/120",
+			"input": "if true; then bar;"
+		},
+		{
+			"id": "errorCases/121",
+			"input": "if true; then bar; fi#etc"
+		},
+		{
+			"id": "errorCases/122",
+			"input": "if a; then b; elif c;"
+		},
+		{
+			"id": "errorCases/123",
+			"input": "'foo' '"
+		},
+		{
+			"id": "errorCases/124",
+			"input": "'foo\n' '"
+		},
+		{
+			"id": "errorCases/125",
+			"input": "while"
+		},
+		{
+			"id": "errorCases/126",
+			"input": "while true;"
+		},
+		{
+			"id": "errorCases/127",
+			"input": "while true; do bar"
+		},
+		{
+			"id": "errorCases/128",
+			"input": "while true; do bar;"
+		},
+		{
+			"id": "errorCases/129",
+			"input": "until"
+		},
+		{
+			"id": "errorCases/130",
+			"input": "until true;"
+		},
+		{
+			"id": "errorCases/131",
+			"input": "until true; do bar"
+		},
+		{
+			"id": "errorCases/132",
+			"input": "until true; do bar;"
+		},
+		{
+			"id": "errorCases/133",
+			"input": "for"
+		},
+		{
+			"id": "errorCases/134",
+			"input": "for i"
+		},
+		{
+			"id": "errorCases/135",
+			"input": "for i in;"
+		},
+		{
+			"id": "errorCases/136",
+			"input": "for i in 1 2 3;"
+		},
+		{
+			"id": "errorCases/137",
+			"input": "for i in 1 2 &"
+		},
+		{
+			"id": "errorCases/138",
+			"input": "for i in 1 2 ("
+		},
+		{
+			"id": "errorCases/139",
+			"input": "for i in 1 2 3; do echo $i;"
+		},
+		{
+			"id": "errorCases/140",
+			"input": "for i in 1 2 3; echo $i;"
+		},
+		{
+			"id": "errorCases/141",
+			"input": "for 'i' in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "errorCases/142",
+			"input": "for in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "errorCases/143",
+			"input": "select"
+		},
+		{
+			"id": "errorCases/144",
+			"input": "select i"
+		},
+		{
+			"id": "errorCases/145",
+			"input": "select i in;"
+		},
+		{
+			"id": "errorCases/146",
+			"input": "select i in 1 2 3;"
+		},
+		{
+			"id": "errorCases/147",
+			"input": "select i in 1 2 3; do echo $i;"
+		},
+		{
+			"id": "errorCases/148",
+			"input": "select i in 1 2 3; echo $i;"
+		},
+		{
+			"id": "errorCases/149",
+			"input": "select 'i' in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "errorCases/150",
+			"input": "select in 1 2 3; do echo $i; done"
+		},
+		{
+			"id": "errorCases/151",
+			"input": "for a repeat in 1 2; do echo $a; done"
+		},
+		{
+			"id": "errorCases/152",
+			"input": "for a typeset in 1 2; do echo $a; done"
+		},
+		{
+			"id": "errorCases/153",
+			"input": "repeat"
+		},
+		{
+			"id": "errorCases/154",
+			"input": "repeat 3 fi"
+		},
+		{
+			"id": "errorCases/155",
+			"input": "{ repeat 3 else }"
+		},
+		{
+			"id": "errorCases/156",
+			"input": "repeat 3 foo; done"
+		},
+		{
+			"id": "errorCases/157",
+			"input": "repeat 3; do foo"
+		},
+		{
+			"id": "errorCases/158",
+			"input": "repeat 3 { foo"
+		},
+		{
+			"id": "errorCases/159",
+			"input": "repeat 3 { foo; done"
+		},
+		{
+			"id": "errorCases/160",
+			"input": "echo foo &\n;"
+		},
+		{
+			"id": "errorCases/161",
+			"input": "echo $(foo"
+		},
+		{
+			"id": "errorCases/162",
+			"input": "echo $((foo"
+		},
+		{
+			"id": "errorCases/163",
+			"input": "echo $((\\"
+		},
+		{
+			"id": "errorCases/164",
+			"input": "echo $((o\\"
+		},
+		{
+			"id": "errorCases/165",
+			"input": "echo $((foo\\a"
+		},
+		{
+			"id": "errorCases/166",
+			"input": "echo $(($(a\""
+		},
+		{
+			"id": "errorCases/167",
+			"input": "echo $((`echo 0`"
+		},
+		{
+			"id": "errorCases/168",
+			"input": "echo $((& $("
+		},
+		{
+			"id": "errorCases/169",
+			"input": "echo $((a'"
+		},
+		{
+			"id": "errorCases/170",
+			"input": "echo $((a b\""
+		},
+		{
+			"id": "errorCases/171",
+			"input": "echo $(())"
+		},
+		{
+			"id": "errorCases/172",
+			"input": "echo $((()))"
+		},
+		{
+			"id": "errorCases/173",
+			"input": "echo $(((3))"
+		},
+		{
+			"id": "errorCases/174",
+			"input": "echo $((+))"
+		},
+		{
+			"id": "errorCases/175",
+			"input": "echo $((a b c))"
+		},
+		{
+			"id": "errorCases/176",
+			"input": "echo $((a ; c))"
+		},
+		{
+			"id": "errorCases/177",
+			"input": "echo $((foo) )"
+		},
+		{
+			"id": "errorCases/178",
+			"input": "echo $((abs (1)))"
+		},
+		{
+			"id": "errorCases/179",
+			"input": "echo $((f(,1)))"
+		},
+		{
+			"id": "errorCases/180",
+			"input": "echo $((f(1,)))"
+		},
+		{
+			"id": "errorCases/181",
+			"input": "echo $((f(1 2)))"
+		},
+		{
+			"id": "errorCases/182",
+			"input": "echo $((f(1"
+		},
+		{
+			"id": "errorCases/183",
+			"input": "echo $((a *))"
+		},
+		{
+			"id": "errorCases/184",
+			"input": "echo $((++))"
+		},
+		{
+			"id": "errorCases/185",
+			"input": "echo $((a ? b))"
+		},
+		{
+			"id": "errorCases/186",
+			"input": "echo $((a : b))"
+		},
+		{
+			"id": "errorCases/187",
+			"input": "echo $((/"
+		},
+		{
+			"id": "errorCases/188",
+			"input": "echo $((:"
+		},
+		{
+			"id": "errorCases/189",
+			"input": "echo $(((a)+=b))"
+		},
+		{
+			"id": "errorCases/190",
+			"input": "echo $((1=2))"
+		},
+		{
+			"id": "errorCases/191",
+			"input": "echo $(($0=2))"
+		},
+		{
+			"id": "errorCases/192",
+			"input": "echo $(($(a)=2))"
+		},
+		{
+			"id": "errorCases/193",
+			"input": "<<EOF\n$(()a"
+		},
+		{
+			"id": "errorCases/194",
+			"input": "<<EOF\n`))"
+		},
+		{
+			"id": "errorCases/195",
+			"input": "echo ${foo"
+		},
+		{
+			"id": "errorCases/196",
+			"input": "echo ${à}"
+		},
+		{
+			"id": "errorCases/197",
+			"input": "echo ${1a}"
+		},
+		{
+			"id": "errorCases/198",
+			"input": "echo ${foo-bar"
+		},
+		{
+			"id": "errorCases/199",
+			"input": "#foo\n{ bar;"
+		},
+		{
+			"id": "errorCases/200",
+			"input": "echo \"foo${bar\""
+		},
+		{
+			"id": "errorCases/201",
+			"input": "echo ${%"
+		},
+		{
+			"id": "errorCases/202",
+			"input": "echo ${+"
+		},
+		{
+			"id": "errorCases/203",
+			"input": "echo ${#${"
+		},
+		{
+			"id": "errorCases/204",
+			"input": "echo ${#$("
+		},
+		{
+			"id": "errorCases/205",
+			"input": "echo ${("
+		},
+		{
+			"id": "errorCases/206",
+			"input": "echo $$(foo)"
+		},
+		{
+			"id": "errorCases/207",
+			"input": "echo ${##"
+		},
+		{
+			"id": "errorCases/208",
+			"input": "echo ${#<}"
+		},
+		{
+			"id": "errorCases/209",
+			"input": "echo ${%<}"
+		},
+		{
+			"id": "errorCases/210",
+			"input": "echo ${!<}"
+		},
+		{
+			"id": "errorCases/211",
+			"input": "echo ${@foo}"
+		},
+		{
+			"id": "errorCases/212",
+			"input": "echo ${$needbraces}"
+		},
+		{
+			"id": "errorCases/213",
+			"input": "echo ${?foo}"
+		},
+		{
+			"id": "errorCases/214",
+			"input": "echo ${-foo}"
+		},
+		{
+			"id": "errorCases/215",
+			"input": "echo ${\"bad\"}"
+		},
+		{
+			"id": "errorCases/216",
+			"input": "echo ${\"$needbraces\"}"
+		},
+		{
+			"id": "errorCases/217",
+			"input": "echo ${\"${foo}}"
+		},
+		{
+			"id": "errorCases/218",
+			"input": "echo ${\"${foo}bad\"}"
+		},
+		{
+			"id": "errorCases/219",
+			"input": "echo ${${nested}foo}"
+		},
+		{
+			"id": "errorCases/220",
+			"input": "echo ${@[@]} ${@[*]}"
+		},
+		{
+			"id": "errorCases/221",
+			"input": "echo ${${nested}[@]"
+		},
+		{
+			"id": "errorCases/222",
+			"input": "echo ${*[@]} ${*[*]}"
+		},
+		{
+			"id": "errorCases/223",
+			"input": "echo ${#[x]}"
+		},
+		{
+			"id": "errorCases/224",
+			"input": "echo ${$[0]}"
+		},
+		{
+			"id": "errorCases/225",
+			"input": "echo ${?[@]}"
+		},
+		{
+			"id": "errorCases/226",
+			"input": "echo ${2[@]}"
+		},
+		{
+			"id": "errorCases/227",
+			"input": "echo ${foo*}"
+		},
+		{
+			"id": "errorCases/228",
+			"input": "echo ${foo;}"
+		},
+		{
+			"id": "errorCases/229",
+			"input": "echo ${foo!}"
+		},
+		{
+			"id": "errorCases/230",
+			"input": "echo ${#foo:-bar}"
+		},
+		{
+			"id": "errorCases/231",
+			"input": "echo ${%foo:1:3}"
+		},
+		{
+			"id": "errorCases/232",
+			"input": "echo ${#foo%x}"
+		},
+		{
+			"id": "errorCases/233",
+			"input": "echo foo\n;"
+		},
+		{
+			"id": "errorCases/234",
+			"input": "<<$ <<0\n$(<<$<<"
+		},
+		{
+			"id": "errorCases/235",
+			"input": "(foo) bar"
+		},
+		{
+			"id": "errorCases/236",
+			"input": "{ foo; } bar"
+		},
+		{
+			"id": "errorCases/237",
+			"input": "if foo; then bar; fi bar"
+		},
+		{
+			"id": "errorCases/238",
+			"input": "case"
+		},
+		{
+			"id": "errorCases/239",
+			"input": "case i"
+		},
+		{
+			"id": "errorCases/240",
+			"input": "case i in 3) foo;"
+		},
+		{
+			"id": "errorCases/241",
+			"input": "case i in 3) foo; 4) bar; esac"
+		},
+		{
+			"id": "errorCases/242",
+			"input": "case i in 3&) foo;"
+		},
+		{
+			"id": "errorCases/243",
+			"input": "case $i in &) foo;"
+		},
+		{
+			"id": "errorCases/244",
+			"input": "case i {"
+		},
+		{
+			"id": "errorCases/245",
+			"input": "case i { x) y ;;"
+		},
+		{
+			"id": "errorCases/246",
+			"input": "\"`\""
+		},
+		{
+			"id": "errorCases/247",
+			"input": "`\"`"
+		},
+		{
+			"id": "errorCases/248",
+			"input": "`\\```"
+		},
+		{
+			"id": "errorCases/249",
+			"input": "`{\nfoo`"
+		},
+		{
+			"id": "errorCases/250",
+			"input": "echo \"`)`\""
+		},
+		{
+			"id": "errorCases/251",
+			"input": "<<$bar\n$bar"
+		},
+		{
+			"id": "errorCases/252",
+			"input": "<<${bar}\n${bar}"
+		},
+		{
+			"id": "errorCases/253",
+			"input": "<<$(bar)\n$(bar)"
+		},
+		{
+			"id": "errorCases/254",
+			"input": "<<$-\n$-"
+		},
+		{
+			"id": "errorCases/255",
+			"input": "<<`bar`\n`bar`"
+		},
+		{
+			"id": "errorCases/256",
+			"input": "<<\"$bar\"\n$bar"
+		},
+		{
+			"id": "errorCases/257",
+			"input": "<<a <<0\n$(<<$<<"
+		},
+		{
+			"id": "errorCases/258",
+			"input": "\"\"()"
+		},
+		{
+			"id": "errorCases/259",
+			"input": "]] )"
+		},
+		{
+			"id": "errorCases/260",
+			"input": "((foo"
+		},
+		{
+			"id": "errorCases/261",
+			"input": "(())"
+		},
+		{
+			"id": "errorCases/262",
+			"input": "echo ((foo"
+		},
+		{
+			"id": "errorCases/263",
+			"input": "echo |&"
+		},
+		{
+			"id": "errorCases/264",
+			"input": "|& a"
+		},
+		{
+			"id": "errorCases/265",
+			"input": "foo |& bar"
+		},
+		{
+			"id": "errorCases/266",
+			"input": "let"
+		},
+		{
+			"id": "errorCases/267",
+			"input": "let a+ b"
+		},
+		{
+			"id": "errorCases/268",
+			"input": "let + a"
+		},
+		{
+			"id": "errorCases/269",
+			"input": "let a ++"
+		},
+		{
+			"id": "errorCases/270",
+			"input": "let (a)++"
+		},
+		{
+			"id": "errorCases/271",
+			"input": "let 1++"
+		},
+		{
+			"id": "errorCases/272",
+			"input": "let $0++"
+		},
+		{
+			"id": "errorCases/273",
+			"input": "let --(a)"
+		},
+		{
+			"id": "errorCases/274",
+			"input": "let --$a"
+		},
+		{
+			"id": "errorCases/275",
+			"input": "let a+\n"
+		},
+		{
+			"id": "errorCases/276",
+			"input": "let ))"
+		},
+		{
+			"id": "errorCases/277",
+			"input": "`let !`"
+		},
+		{
+			"id": "errorCases/278",
+			"input": "let a:b"
+		},
+		{
+			"id": "errorCases/279",
+			"input": "let a+b=c"
+		},
+		{
+			"id": "errorCases/280",
+			"input": "`let` { foo; }"
+		},
+		{
+			"id": "errorCases/281",
+			"input": "$(let)"
+		},
+		{
+			"id": "errorCases/282",
+			"input": "[["
+		},
+		{
+			"id": "errorCases/283",
+			"input": "[[ ]]"
+		},
+		{
+			"id": "errorCases/284",
+			"input": "[[ a"
+		},
+		{
+			"id": "errorCases/285",
+			"input": "[[ a ||"
+		},
+		{
+			"id": "errorCases/286",
+			"input": "[[ a && &&"
+		},
+		{
+			"id": "errorCases/287",
+			"input": "[[ a && ]]"
+		},
+		{
+			"id": "errorCases/288",
+			"input": "[[ a =="
+		},
+		{
+			"id": "errorCases/289",
+			"input": "[[ a =~"
+		},
+		{
+			"id": "errorCases/290",
+			"input": "[[ -f a"
+		},
+		{
+			"id": "errorCases/291",
+			"input": "[[ -n\na ]]"
+		},
+		{
+			"id": "errorCases/292",
+			"input": "[[ a -ef\nb ]]"
+		},
+		{
+			"id": "errorCases/293",
+			"input": "[[ a ==\nb ]]"
+		},
+		{
+			"id": "errorCases/294",
+			"input": "[[ a -nt b"
+		},
+		{
+			"id": "errorCases/295",
+			"input": "[[ a =~ b"
+		},
+		{
+			"id": "errorCases/296",
+			"input": "[[ a b c ]]"
+		},
+		{
+			"id": "errorCases/297",
+			"input": "[[ a b$x c ]]"
+		},
+		{
+			"id": "errorCases/298",
+			"input": "[[ a & b ]]"
+		},
+		{
+			"id": "errorCases/299",
+			"input": "[[ true && () ]]"
+		},
+		{
+			"id": "errorCases/300",
+			"input": "[[ true && (&& ]]"
+		},
+		{
+			"id": "errorCases/301",
+			"input": "[[ a == ! b ]]"
+		},
+		{
+			"id": "errorCases/302",
+			"input": "[[ (! ) ]]"
+		},
+		{
+			"id": "errorCases/303",
+			"input": "[[ ! && ]]"
+		},
+		{
+			"id": "errorCases/304",
+			"input": "[[ (-e ) ]]"
+		},
+		{
+			"id": "errorCases/305",
+			"input": "[[ (a) == b ]]"
+		},
+		{
+			"id": "errorCases/306",
+			"input": "[[ a =~ ; ]]"
+		},
+		{
+			"id": "errorCases/307",
+			"input": "[[ a =~ )"
+		},
+		{
+			"id": "errorCases/308",
+			"input": "[[ a =~ ())"
+		},
+		{
+			"id": "errorCases/309",
+			"input": "[[ >"
+		},
+		{
+			"id": "errorCases/310",
+			"input": "local ("
+		},
+		{
+			"id": "errorCases/311",
+			"input": "declare 0=${o}"
+		},
+		{
+			"id": "errorCases/312",
+			"input": "declare ab=${o})"
+		},
+		{
+			"id": "errorCases/313",
+			"input": "export ab=$0("
+		},
+		{
+			"id": "errorCases/314",
+			"input": "declare {x,y}=(1 2)"
+		},
+		{
+			"id": "errorCases/315",
+			"input": "a=(<)"
+		},
+		{
+			"id": "errorCases/316",
+			"input": "a=([)"
+		},
+		{
+			"id": "errorCases/317",
+			"input": "a=([i)"
+		},
+		{
+			"id": "errorCases/318",
+			"input": "a=([i])"
+		},
+		{
+			"id": "errorCases/319",
+			"input": "a[i]=(y)"
+		},
+		{
+			"id": "errorCases/320",
+			"input": "a=([i]=(y))"
+		},
+		{
+			"id": "errorCases/321",
+			"input": "o=([0]=#"
+		},
+		{
+			"id": "errorCases/322",
+			"input": "a[b] ==["
+		},
+		{
+			"id": "errorCases/323",
+			"input": "a[b] +=c"
+		},
+		{
+			"id": "errorCases/324",
+			"input": "a=(x y) foo"
+		},
+		{
+			"id": "errorCases/325",
+			"input": "a[2]=x foo"
+		},
+		{
+			"id": "errorCases/326",
+			"input": "a=(x y) local foo"
+		},
+		{
+			"id": "errorCases/327",
+			"input": "function"
+		},
+		{
+			"id": "errorCases/328",
+			"input": "function foo("
+		},
+		{
+			"id": "errorCases/329",
+			"input": "function `function"
+		},
+		{
+			"id": "errorCases/330",
+			"input": "function \"foo\"(){}"
+		},
+		{
+			"id": "errorCases/331",
+			"input": "function foo()"
+		},
+		{
+			"id": "errorCases/332",
+			"input": ">f function foo { a; }"
+		},
+		{
+			"id": "errorCases/333",
+			"input": "@test"
+		},
+		{
+			"id": "errorCases/334",
+			"input": "@test 'desc'"
+		},
+		{
+			"id": "errorCases/335",
+			"input": "echo <<<"
+		},
+		{
+			"id": "errorCases/336",
+			"input": "a["
+		},
+		{
+			"id": "errorCases/337",
+			"input": "a[b"
+		},
+		{
+			"id": "errorCases/338",
+			"input": "a[]"
+		},
+		{
+			"id": "errorCases/339",
+			"input": "a[["
+		},
+		{
+			"id": "errorCases/340",
+			"input": "echo $((a[))"
+		},
+		{
+			"id": "errorCases/341",
+			"input": "echo $((a[b))"
+		},
+		{
+			"id": "errorCases/342",
+			"input": "echo $((a[]))"
+		},
+		{
+			"id": "errorCases/343",
+			"input": "echo $((x$t["
+		},
+		{
+			"id": "errorCases/344",
+			"input": "a[1]"
+		},
+		{
+			"id": "errorCases/345",
+			"input": "a[i]+"
+		},
+		{
+			"id": "errorCases/346",
+			"input": "a[1]#"
+		},
+		{
+			"id": "errorCases/347",
+			"input": "echo $[foo"
+		},
+		{
+			"id": "errorCases/348",
+			"input": "echo $'"
+		},
+		{
+			"id": "errorCases/349",
+			"input": "echo $\""
+		},
+		{
+			"id": "errorCases/350",
+			"input": "echo @("
+		},
+		{
+			"id": "errorCases/351",
+			"input": "echo @(a"
+		},
+		{
+			"id": "errorCases/352",
+			"input": "echo @([abc)])"
+		},
+		{
+			"id": "errorCases/353",
+			"input": "((@("
+		},
+		{
+			"id": "errorCases/354",
+			"input": "time { foo;"
+		},
+		{
+			"id": "errorCases/355",
+			"input": "time ! foo"
+		},
+		{
+			"id": "errorCases/356",
+			"input": "coproc"
+		},
+		{
+			"id": "errorCases/357",
+			"input": "coproc\n$"
+		},
+		{
+			"id": "errorCases/358",
+			"input": "coproc declare ("
+		},
+		{
+			"id": "errorCases/359",
+			"input": "echo ${foo[1 2]}"
+		},
+		{
+			"id": "errorCases/360",
+			"input": "echo ${foo[}"
+		},
+		{
+			"id": "errorCases/361",
+			"input": "echo ${foo[a[b]}"
+		},
+		{
+			"id": "errorCases/362",
+			"input": "echo ${foo]}"
+		},
+		{
+			"id": "errorCases/363",
+			"input": "echo ${foo[]}"
+		},
+		{
+			"id": "errorCases/364",
+			"input": "echo ${a/\n"
+		},
+		{
+			"id": "errorCases/365",
+			"input": "echo ${a/''"
+		},
+		{
+			"id": "errorCases/366",
+			"input": "echo ${a-\n"
+		},
+		{
+			"id": "errorCases/367",
+			"input": "echo ${foo:"
+		},
+		{
+			"id": "errorCases/368",
+			"input": "foo=force_expansion; echo ${foo:1 2}"
+		},
+		{
+			"id": "errorCases/369",
+			"input": "echo ${foo:1"
+		},
+		{
+			"id": "errorCases/370",
+			"input": "echo ${foo:1:"
+		},
+		{
+			"id": "errorCases/371",
+			"input": "echo ${foo:1:2"
+		},
+		{
+			"id": "errorCases/372",
+			"input": "echo ${foo:1:#2}"
+		},
+		{
+			"id": "errorCases/373",
+			"input": "echo ${foo:h"
+		},
+		{
+			"id": "errorCases/374",
+			"input": "echo ${foo,"
+		},
+		{
+			"id": "errorCases/375",
+			"input": "echo ${foo@"
+		},
+		{
+			"id": "errorCases/376",
+			"input": "foo=force_expansion; echo ${foo@}"
+		},
+		{
+			"id": "errorCases/377",
+			"input": "echo ${foo@Q"
+		},
+		{
+			"id": "errorCases/378",
+			"input": "foo=force_expansion; echo ${foo@bar}"
+		},
+		{
+			"id": "errorCases/379",
+			"input": "foo=force_expansion; echo ${foo@'Q'}"
+		},
+		{
+			"id": "errorCases/380",
+			"input": "echo $((echo a); (echo b))"
+		},
+		{
+			"id": "errorCases/381",
+			"input": "((echo a); (echo b))"
+		},
+		{
+			"id": "errorCases/382",
+			"input": "for ((;;"
+		},
+		{
+			"id": "errorCases/383",
+			"input": "for ((;;0000000"
+		},
+		{
+			"id": "errorCases/384",
+			"input": "echo <("
+		},
+		{
+			"id": "errorCases/385",
+			"input": "echo >("
+		},
+		{
+			"id": "errorCases/386",
+			"input": "echo {var}>foo"
+		},
+		{
+			"id": "errorCases/387",
+			"input": "echo ;&"
+		},
+		{
+			"id": "errorCases/388",
+			"input": "echo ;;&"
+		},
+		{
+			"id": "errorCases/389",
+			"input": "echo ;|"
+		},
+		{
+			"id": "errorCases/390",
+			"input": "for i in 1 2 3; { echo; }"
+		},
+		{
+			"id": "errorCases/391",
+			"input": "echo !(a)"
+		},
+		{
+			"id": "errorCases/392",
+			"input": "echo $a@(b)"
+		},
+		{
+			"id": "errorCases/393",
+			"input": "foo=(1 2)"
+		},
+		{
+			"id": "errorCases/394",
+			"input": "a=$c\n'"
+		},
+		{
+			"id": "errorCases/395",
+			"input": "echo ${!foo[@]}"
+		},
+		{
+			"id": "errorCases/396",
+			"input": "foo << < bar"
+		},
+		{
+			"id": "errorCases/397",
+			"input": "echo ${foo,bar}"
+		},
+		{
+			"id": "errorCases/398",
+			"input": "echo ${foo@Q}"
+		},
+		{
+			"id": "errorCases/399",
+			"input": "echo ${foo@a}"
+		},
+		{
+			"id": "errorCases/400",
+			"input": "echo ${foo@u}"
+		},
+		{
+			"id": "errorCases/401",
+			"input": "echo ${foo@A}"
+		},
+		{
+			"id": "errorCases/402",
+			"input": "echo ${foo@E}"
+		},
+		{
+			"id": "errorCases/403",
+			"input": "echo ${foo@K}"
+		},
+		{
+			"id": "errorCases/404",
+			"input": "echo ${foo@k}"
+		},
+		{
+			"id": "errorCases/405",
+			"input": "echo ${foo@L}"
+		},
+		{
+			"id": "errorCases/406",
+			"input": "echo ${foo@P}"
+		},
+		{
+			"id": "errorCases/407",
+			"input": "echo ${foo@U}"
+		},
+		{
+			"id": "errorCases/408",
+			"input": "foo=force_expansion; echo ${foo@#}"
+		},
+		{
+			"id": "errorCases/409",
+			"input": "`\"`\\"
+		}
+	]
+}

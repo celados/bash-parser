@@ -1,0 +1,46 @@
+name: CI
+
+# Release runs `check` only when package.json changes; every other push and PR
+# is gated here, on the same runner. `check` includes the differential suite.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: celados-linux
+    timeout-minutes: 15
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
+        with:
+          bun-version: 1.4.2
+
+      - name: Write registry auth
+        run: |
+          set -euo pipefail
+          cat > .npmrc <<'EOF'
+          @celados:registry=https://npm.celados.com
+          //npm.celados.com/:_authToken=${NODE_AUTH_TOKEN}
+          EOF
+
+      - run: bun install --frozen-lockfile
+      - run: bun run check
