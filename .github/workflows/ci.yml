@@ -17,10 +17,10 @@ permissions:
 
 jobs:
   check:
-    runs-on: celados-linux
+    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'celados-linux' }}
     timeout-minutes: 15
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      CELADOS_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v7
 
@@ -34,13 +34,6 @@ jobs:
         with:
           bun-version: 1.4.2
 
-      - name: Write registry auth
-        run: |
-          set -euo pipefail
-          cat > .npmrc <<'EOF'
-          @celados:registry=https://npm.celados.com
-          //npm.celados.com/:_authToken=${NODE_AUTH_TOKEN}
-          EOF
-
+      - uses: celados/.github/actions/setup-celados-npm@setup-celados-npm-v1
       - run: bun install --frozen-lockfile
       - run: bun run check
