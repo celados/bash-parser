@@ -1,6 +1,4 @@
-import { harness } from '@celados/harness'
+import { harness, ignore } from '@celados/harness'
 import { defineConfig } from 'vite-plus'
 
-export default defineConfig(
-	harness({ ignore: ['.scratch/**', 'scripts/corpus.json'] }),
-)
+export default defineConfig({ ...harness(ignore('scripts/corpus.json')) })

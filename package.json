@@ -38,13 +38,13 @@
 		"prepare": "vp config"
 	},
 	"devDependencies": {
-		"@celados/harness": "^0.1.8",
+		"@celados/harness": "^0.2.1",
 		"@types/bun": "^1.4.5",
-		"fallow": "^3.45.0",
+		"fallow": "^3.48.0",
 		"sh-syntax": "^0.8.7",
 		"tsrs": "^7.1.0-beta.tsrs4",
 		"typescript": "^7.0.2",
-		"vite-plus": "^1.7.0"
+		"vite-plus": "^1.8.0"
 	},
 	"engines": {
 		"bun": ">=1.4.0"
